@@ -8,17 +8,55 @@ table {
     border-radius: 10px;
     padding-top: 2%;
 }
-
+#displayCompareBox {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    color: rgb(248, 62, 96) ;
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    z-index: 990;
+}
 .compareBox {
     background-color: white;
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-shadow: 0 -14px 20px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-evenly;
     z-index: 1000;
 }
 
+.collapseBtn {
+    position: absolute;
+    right: 40px;
+    top: -20px;
+}
+
+#collapseBtn {
+    width: 90px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+#removeListBtn {
+    background-color: transparent;
+    color: gray;
+    border: none;
+    font-size: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
 .comparePhone {
     height: 150px;
     width: 27%;
@@ -59,6 +97,7 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 #confirmBtn {
@@ -80,6 +119,17 @@ label {
     position: absolute;
     top: 5px;
     right: 5px;
+    width: 10px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.inner_close:hover {
+    background-color: rgb(85, 85, 85);
 }
 
 img {
