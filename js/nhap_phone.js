@@ -132,12 +132,14 @@ fetch('phone.json')
 
         // Hiển thị sản phẩm oppo
         oppo.forEach((smart, index) => {
+            smart.brand = smart.brand.toLowerCase();
             renderProductBy(smart, `S${index + 1}oppo`); // Render sản phẩm Samsung vào div có id="S1Samsung", "S2Samsung", ...
             renderProduct(smart, `B${index + 1}oppo`);
         });
 
         // Hiển thị sản phẩm Samsung
         redmi.forEach((smart, index) => {
+            smart.brand = smart.brand.toLowerCase();
             renderProductBy(smart, `S${index + 1}redmi`); // Render sản phẩm Samsung vào div có id="S1Samsung", "S2Samsung", ...
             renderProduct(smart, `B${index + 1}redmi`);
         });
