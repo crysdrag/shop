@@ -113,6 +113,8 @@ fetch('phone.json')
         // Lấy sản phẩm từ các hãng
         const apple = data.apple || [];
         const samsung = data.samsung || [];
+        const oppo = data.oppo || [];
+        const redmi = data.redmi || [];
         
         // Hiển thị sản phẩm Apple
         apple.forEach((smart, index) => {
@@ -126,6 +128,18 @@ fetch('phone.json')
             smart.brand = smart.brand.toLowerCase();
             renderProductBy(smart, `S${index + 1}Samsung`); // Render sản phẩm Samsung vào div có id="S1Samsung", "S2Samsung", ...
             renderProduct(smart, `B${index + 1}Samsung`);
+        });
+
+        // Hiển thị sản phẩm oppo
+        oppo.forEach((smart, index) => {
+            renderProductBy(smart, `S${index + 1}oppo`); // Render sản phẩm Samsung vào div có id="S1Samsung", "S2Samsung", ...
+            renderProduct(smart, `B${index + 1}oppo`);
+        });
+
+        // Hiển thị sản phẩm Samsung
+        redmi.forEach((smart, index) => {
+            renderProductBy(smart, `S${index + 1}redmi`); // Render sản phẩm Samsung vào div có id="S1Samsung", "S2Samsung", ...
+            renderProduct(smart, `B${index + 1}redmi`);
         });
 
         // Kết hợp tất cả sản phẩm từ các hãng khác nhau vào mảng allProducts
