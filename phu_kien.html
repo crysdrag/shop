@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phụ Kiện Điện Thoại - InnoWave</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .banner h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 1.2em;
+            color: #ccc;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(25% - 20px);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-card i {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        .category-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .featured-products {
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .product-specs {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-price .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.8em;
+        }
+
+        .buy-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .detailed-categories {
+            margin-bottom: 40px;
+        }
+
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-section h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .subcategories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .subcategory {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .subcategory h4 {
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        .subcategory ul {
+            list-style-type: none;
+        }
+
+        .subcategory li {
+            margin-bottom: 10px;
+        }
+
+        .special-offers, .warranty-info {
+            margin-bottom: 40px;
+        }
+
+        .offer-grid, .warranty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .offer-card, .warranty-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .offer-card h3, .warranty-card h3 {
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        .offer-code {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .warranty-card i {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="header">
+        <section>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <i class="fa-solid fa-gift" style="color: blue;"></i>
+                        <span>Ưu đãi đặc biệt: Giảm giá 20% cho tất cả các sản phẩm!</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <i class="fa-solid fa-mobile" style="color: red;"></i>
+                        <span>Tặng kèm ốp lưng khi mua điện thoại bất kỳ!</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <i class="fa-solid fa-wallet" style="color: green;"></i>
+                        <span>Giảm thêm 5% khi thanh toán qua ví điện tử!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hotline">
+                <div>
+                    <a href="index.html"></a>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>InnoWave</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="">Hotline: 1900 1234</a>
+                </div>
+            </div>
+        </section>
+        <div id="header-main" class="headerMain_main">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fa-solid fa-i"></i>
+                    <span>nnoWave</span>
+                </a>
+            </div>
+            <div class="menu icon" id="menu-icon">
+                <div>
+                    <i class="fa-solid fa-bars"></i>
+                    <span>Danh mục</span>
+                </div>
+            </div>
+            <div class="mainMain-menu">
+                <div class="main-menu">
+                    <div class="main-GT item icon">
+                        <a href="gioithieu.html">
+                            <i class="fa-solid fa-info-circle"></i>
+                            <span>Giới thiệu</span>
+                        </a>
+                    </div>
+                    <div class="main-DT item icon">
+                        <a href="phone.html">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>Điện thoại</span>
+                        </a>
+                    </div>
+                    <div class="mainMain-phone">
+                        <div class="mainMainPhone">
+                            <div class="main-phone">
+                                <span>Thương hiệu nổi bật</span>
+                                <div class="phone-NB">
+                                    <div class="phone">
+                                        <a href="smart.html?product=iphone">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="hidden md:block" srcset="https://cdn2.fptshop.com.vn/unsafe/32x0/filters:quality(100)/small/133_logo_apple_a96d38701f.png 1x, https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/133_logo_apple_a96d38701f.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/133_logo_apple_a96d38701f.png" style="color: transparent;">
+                                            <span>Iphone</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone">
+                                        <a href="smart.html?product=samsung">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="hidden md:block" srcset="https://cdn2.fptshop.com.vn/unsafe/32x0/filters:quality(100)/small/samsung_icon_menu_80d224e1c9.png 1x, https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/samsung_icon_menu_80d224e1c9.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/samsung_icon_menu_80d224e1c9.png" style="color: transparent;">
+                                            <span>Samsung</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone">
+                                        <a href="smart.html?product=oppo">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="hidden md:block" srcset="https://cdn2.fptshop.com.vn/unsafe/32x0/filters:quality(100)/small/25_logo_oppo_5fa74f12b2.png 1x, https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/25_logo_oppo_5fa74f12b2.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/25_logo_oppo_5fa74f12b2.png" style="color: transparent;">
+                                            <span>Oppo</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone">
+                                        <a href="smart.html?product=xiaomi">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="hidden md:block" srcset="https://cdn2.fptshop.com.vn/svg/18_logo_xiaomi_b7c20fd2cd.svg?w=32&amp;q=100 1x, https://cdn2.fptshop.com.vn/svg/18_logo_xiaomi_b7c20fd2cd.svg?w=64&amp;q=100 2x" src="https://cdn2.fptshop.com.vn/svg/18_logo_xiaomi_b7c20fd2cd.svg?w=64&amp;q=100" style="color: transparent;">
+                                            <span>Xiaomi</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="rowRow">
+                                    <div class="row">
+                                        <div class="row1">
+                                            <a href="smart.html?product=iphone">Iphone</a>
+                                            <div><a href="product_page.html?brand=Apple&id=S41">Iphone 16</a></div>
+                                            <div><a href="product_page.html?brand=Apple&id=S85">Iphone 15</a></div>
+                                            <div><a href="product_page.html?brand=Apple&id=S70">Iphone 15 Pro</a></div>
+                                            <div><a href="product_page.html?brand=Apple&id=S55">Iphone 15 Pro Max</a></div>
+                                            <div><a href="product_page.html?brand=Apple&id=S103">Iphone 14 Pro Max</a></div>
+                                        </div>
+                                        <div class="row1">
+                                            <a href="smart.html?product=samsung">Samsung</a>
+                                            <div><a href="">Samsung Galaxy S23 Ultra</a></div>
+                                            <div><a href="">Samsung Galaxy Z Fold 4</a></div>
+                                            <div><a href="">Samsung Galaxy Z Flip 4</a></div>
+                                            <div><a href="">Samsung Galaxy S22 Ultra</a></div>
+                                            <div><a href="">Samsung Galaxy A73</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="row1">
+                                            <a href="smart.html?product=oppo">Oppo</a>
+                                            <div><a href="">Oppo Find X6 Pro</a></div>
+                                            <div><a href="">Oppo Reno8 Pro</a></div>
+                                            <div><a href="">Oppo A96</a></div>
+                                            <div><a href="">Oppo A77</a></div>
+                                            <div><a href="">Oppo A57</a></div>
+                                        </div>
+                                        <div class="row1">
+                                            <a href="smart.html?product=xiaomi">Xiaomi</a>
+                                            <div><a href="">Xiaomi Redmi Note 11</a></div>
+                                            <div><a href="">Xiaomi Mi 11 Ultra</a></div>
+                                            <div><a href="">Xiaomi Poco X3 Pro</a></div>
+                                            <div><a href="">Xiaomi Mi 10T Pro</a></div>
+                                            <div><a href="">Xiaomi Redmi 9A</a></div>
+                                        </div>       
+                                    </div>
+                                    <div class="row">
+                                        <div class="row1">
+                                            <a href="smart.html?product=vivo">Vivo</a>
+                                            <div><a href="">Vivo X90 Pro</a></div>
+                                            <div><a href="">Vivo V21 5G</a></div>
+                                            <div><a href="">Vivo Y72 5G</a></div>
+                                            <div><a href="">Vivo X60 Pro</a></div>
+                                            <div><a href="">Vivo Y20s</a></div>
+                                        </div>
+                                        <div class="row1">
+                                            <a href="phone.html">Thương hiệu khác</a>
+                                            <div><a href="smart.html?product=huawei">Huawei</a></div>
+                                            <div><a href="smart.html?product=nokia">Nokia</a></div>
+                                            <div><a href="smart.html?product=oneplus">OnePlus</a></div>
+                                        </div> 
+                                    </div>  
+                                </div>
+                                <div>
+                                    <hr> 
+                                </div>
+                            </div>
+                            <div class="main-hot">
+                                <span>Bán chạy nhất</span>
+                                <div class="phone-PL">
+                                    <div id="B1Apple"></div>
+                                    <div id="B2Apple"></div>
+                                    <div id="B3Apple"></div>
+                                    <div id="B4Apple"></div>
+                                    <div id="B5Apple"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-KM item icon">
+                        <a href="">
+                            <i class="fa-solid fa-tags"></i>
+                            <span>Khuyến mại</span>
+                        </a>
+                    </div>
+                    <div>
+
+                        <!-- Khuyến mại -->
+
+
+                    </div>
+                    <div class="main-PK item icon">
+                        <a href="phu_kien.html">
+                            <i class="fa-solid fa-headphones"></i>
+                            <span>Phụ kiện</span>
+                        </a>
+                        <hr>
+                    </div>
+                    <div class="mainMain-PK">
+                        <div class="mainMainPK">
+                            <div class="main-PK">
+                                <span>Thương hiệu nổi bật</span> 
+                                <div class="phone-NB">
+                                    <div class="phone">
+                                        <a href="">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="hidden md:block" srcset="https://cdn2.fptshop.com.vn/unsafe/32x0/filters:quality(100)/small/133_logo_apple_a96d38701f.png 1x, https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/133_logo_apple_a96d38701f.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/133_logo_apple_a96d38701f.png" style="color: transparent;">
+                                            <span>Iphone</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone">
+                                        <a href="">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="hidden md:block" srcset="https://cdn2.fptshop.com.vn/unsafe/32x0/filters:quality(100)/small/samsung_icon_menu_80d224e1c9.png 1x, https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/samsung_icon_menu_80d224e1c9.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/samsung_icon_menu_80d224e1c9.png" style="color: transparent;">
+                                            <span>Samsung</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone">
+                                        <a href="">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="hidden md:block" srcset="https://cdn2.fptshop.com.vn/unsafe/32x0/filters:quality(100)/small/175_logo_Belkin_634a570cdc.png 1x, https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/175_logo_Belkin_634a570cdc.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/175_logo_Belkin_634a570cdc.png" style="color: transparent;">
+                                            <span>Belkin</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone">
+                                        <a href="">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="hidden md:block" srcset="https://cdn2.fptshop.com.vn/unsafe/32x0/filters:quality(100)/small/211_logo_tomtoc_beeb88db55.png 1x, https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/211_logo_tomtoc_beeb88db55.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/small/211_logo_tomtoc_beeb88db55.png" style="color: transparent;">
+                                            <span>Tomtoc</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="phone-NB">
+                                    <div class="phone-PK">
+                                        <a href="">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="48" height="48" decoding="async" data-nimg="1" class="transition duration-300 ease-in-out group-hover:scale-[1.1]" srcset="https://cdn2.fptshop.com.vn/unsafe/48x0/filters:quality(100)/small/Sac_cap_b0553fdf08.png 1x, https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Sac_cap_b0553fdf08.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Sac_cap_b0553fdf08.png" style="color: transparent;"><br>
+                                            <span>Sạc, cáp</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone-PK">
+                                        <a href="">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="48" height="48" decoding="async" data-nimg="1" class="transition duration-300 ease-in-out group-hover:scale-[1.1]" srcset="https://cdn2.fptshop.com.vn/unsafe/48x0/filters:quality(100)/small/Bao_da_op_lung_66f1744728.png 1x, https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Bao_da_op_lung_66f1744728.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Bao_da_op_lung_66f1744728.png" style="color: transparent;"><br>
+                                            <span>Bao da, ốp lưng</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone-PK">
+                                        <a href="">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="48" height="48" decoding="async" data-nimg="1" class="transition duration-300 ease-in-out group-hover:scale-[1.1]" srcset="https://cdn2.fptshop.com.vn/unsafe/48x0/filters:quality(100)/small/Sac_du_phong_6ca6d91f53.png 1x, https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Sac_du_phong_6ca6d91f53.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Sac_du_phong_6ca6d91f53.png" style="color: transparent;"><br>
+                                            <span>Sạc dự phòng</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone-PK">
+                                        <a href="">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="48" height="48" decoding="async" data-nimg="1" class="transition duration-300 ease-in-out group-hover:scale-[1.1]" srcset="https://cdn2.fptshop.com.vn/unsafe/48x0/filters:quality(100)/small/Tai_nghe_khong_day_61f7928270.png 1x, https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Tai_nghe_khong_day_61f7928270.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Tai_nghe_khong_day_61f7928270.png" style="color: transparent;"><br>
+                                            <span>Tai nghe không dây</span>
+                                        </a>
+                                    </div>
+                                    <div class="phone-PK">
+                                        <a href="">
+                                            <img alt="https://fptshop.com.vn/" loading="lazy" width="48" height="48" decoding="async" data-nimg="1" class="transition duration-300 ease-in-out group-hover:scale-[1.1]" srcset="https://cdn2.fptshop.com.vn/unsafe/48x0/filters:quality(100)/small/Mieng_dan_man_hinh_b2be36adc4.png 1x, https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Mieng_dan_man_hinh_b2be36adc4.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/96x0/filters:quality(100)/small/Mieng_dan_man_hinh_b2be36adc4.png" style="color: transparent;"><br>
+                                            <span>Kính cường lực</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="accessories">
+                                    <div>
+                                        <span>Phụ kiện di động</span>
+                                        <div class="row">
+                                            <div class="row1">
+                                                <div><a href="">Sạc, Cáp</a></div>
+                                                <div><a href="">Sạc dự phòng</a></div>
+                                            </div>
+                                            <div class="row1">
+                                                <div><a href="">Bao da, Ốp lưng</a></div>
+                                                <div><a href="">Miếng dán màn hình</a></div>
+                                            </div>
+                                            <div class="row1">
+                                                <div><a href="">Bút cảm ứng</a></div>
+                                                <div><a href="">Thẻ nhớ</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accessories">
+                                        <span>Âm thanh, hình ảnh</span>
+                                        <div class="row">
+                                            <div class="row1">
+                                                <div><a href="">Tai nghe</a></div>
+                                                <div><a href="">Loa</a></div>
+                                            </div>
+                                            <div class="row1">
+                                                <div><a href="">Camera</a></div>
+                                            </div>
+                                            <div class="row1">
+                                                <div><a href="">Gimbal</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hot-PK">
+                                <span>Bán chạy nhất</span>
+                                <div class="phone-PL">
+                                    <div id="S11Apple"></div>
+                                    <div id="S12Apple"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-mobile-alt"></i>
+                            <span>Mãy cũ</span>
+                        </a>
+                    </div>
+                    <!-- <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-info"></i>
+                            <span>Thông tin hay</span>
+                        </a>
+                        <hr>
+                    </div>
+                    <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>Realme</span>
+                        </a>
+                    </div>
+                    <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>Google Pixel</span>
+                        </a>
+                    </div>
+                    <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>Motorola</span>
+                        </a>
+                    </div>
+                    <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>LG</span>
+                        </a>
+                    </div>
+                    <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>HTC</span>
+                        </a>
+                    </div>
+                    <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>Sony</span>
+                        </a>
+                    </div>
+                    <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>Nokia</span>
+                        </a>
+                    </div>
+                    <div class="item icon">
+                        <a href="">
+                            <i class="fa-solid fa-mobile"></i>
+                            <span>OnePlus</span>
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+            <form class="search">
+                <div>
+                    <input type="text" id="search-bar" placeholder="Tìm kiếm sản phẩm..." oninput="searchProducts()">
+                    <div id="results" ></div>
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+            <div class="shoping icon">
+                <div>
+                    <a href="giohang.html">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Giỏ hàng</span>
+                    </a>
+                </div>
+            </div>
+            <div class="user icon">
+                <div>
+                    <a href="login.html">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="deal">
+            <div>
+                <img alt="Deal chớp nhoáng" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="mr-2" style="color:transparent" srcset="https://cdn2.fptshop.com.vn/unsafe/32x0/filters:quality(100)/soc_2f6cbf28ff.png 1x, https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/soc_2f6cbf28ff.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/soc_2f6cbf28ff.png">
+                <span style="color: black;">Deal chớp nhoáng</span>
+            </div>
+            <div>
+                <img alt="Đổi máy 4G tặng đến 600K" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="mr-2" style="color:transparent" srcset="https://cdn2.fptshop.com.vn/unsafe/32x0/filters:quality(100)/4g_fb224f4db9.png 1x, https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/4g_fb224f4db9.png 2x" src="https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/4g_fb224f4db9.png">
+                <span style="color: black;">Đổi máy 4G tặng đến 600k</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="banner">
+            <h1>Phụ Kiện Chính Hãng</h1>
+            <p>Đa dạng - Chất lượng - Bảo hành chính hãng</p>
+        </div>
+
+        <div class="categories">
+            <div class="category-card">
+                <i class="fas fa-charging-station"></i>
+                <h3>Sạc & Cáp</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-headphones"></i>
+                <h3>Tai Nghe</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Ốp Lưng</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-battery-full"></i>
+                <h3>Pin Dự Phòng</h3>
+            </div>
+        </div>
+
+        <section class="featured-products">
+            <h2>Sản Phẩm Nổi Bật</h2>
+            <div class="product-grid">
+                <!-- Sạc -->
+                <div class="product-card">
+                    <div class="product-badge">Hot</div>
+                    <img src="https://cdn.tgdd.vn/Products/Images/58/230315/adapter-sac-type-c-20w-cho-iphone-ipad-apple-mhje3-trang-thumb-600x600.jpeg" alt="Sạc nhanh Apple 20W">
+                    <h3>Sạc Nhanh Apple 20W</h3>
+                    <div class="product-specs">
+                        <p>Công suất: 20W</p>
+                        <p>Cổng sạc: Type-C</p>
+                        <p>Bảo hành: 12 tháng</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">490.000đ</span>
+                        <span class="original-price">590.000đ</span>
+                    </div>
+                    <button class="buy-btn">Mua Ngay</button>
+                </div>
+        
+                <!-- Tai nghe -->
+                <div class="product-card">
+                    <div class="product-badge">New</div>
+                    <img src="https://cdn.tgdd.vn/Products/Images/54/289781/tai-nghe-bluetooth-airpods-pro-2nd-gen-apple-thumb-600x600.jpeg" alt="AirPods Pro 2">
+                    <h3>Apple AirPods Pro 2</h3>
+                    <div class="product-specs">
+                        <p>Pin: 30 giờ</p>
+                        <p>Chống ồn: Có</p>
+                        <p>Chống nước: IPX4</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">5.990.000đ</span>
+                        <span class="original-price">6.990.000đ</span>
+                    </div>
+                    <button class="buy-btn">Mua Ngay</button>
+                </div>
+        
+                <!-- Ốp lưng -->
+                <div class="product-card">
+                    <img src="https://cdn.tgdd.vn/Products/Images/60/290326/op-lung-magsafe-iphone-14-pro-max-nhua-trong-apple-mpu73-thumb-600x600.jpeg" alt="Ốp lưng iPhone 14 Pro Max">
+                    <h3>Ốp lưng iPhone 14 Pro Max MagSafe</h3>
+                    <div class="product-specs">
+                        <p>Chất liệu: Nhựa trong</p>
+                        <p>Tương thích: MagSafe</p>
+                        <p>Bảo hành: 6 tháng</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">790.000đ</span>
+                        <span class="original-price">990.000đ</span>
+                    </div>
+                    <button class="buy-btn">Mua Ngay</button>
+                </div>
+        
+                <!-- Pin dự phòng -->
+                <div class="product-card">
+                    <img src="https://cdn.tgdd.vn/Products/Images/57/266084/pin-sac-du-phong-polymer-10000mah-type-c-pd-qc30-xmobile-thumb-600x600.jpeg" alt="Pin dự phòng">
+                    <h3>Pin Dự Phòng 10000mAh</h3>
+                    <div class="product-specs">
+                        <p>Dung lượng: 10000mAh</p>
+                        <p>Sạc nhanh: PD & QC 3.0</p>
+                        <p>Cổng: Type-C, USB-A</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">490.000đ</span>
+                        <span class="original-price">690.000đ</span>
+                    </div>
+                    <button class="buy-btn">Mua Ngay</button>
+                </div>
+        
+                <!-- Kính cường lực -->
+                <div class="product-card">
+                    <div class="product-badge">Bestseller</div>
+                    <img src="https://cdn.tgdd.vn/Products/Images/1363/301608/ep-kinh-iphone-14-pro-max-trong-suot-jcpal-thumb-600x600.jpeg" alt="Kính cường lực iPhone">
+                    <h3>Kính Cường Lực iPhone 14 Pro Max</h3>
+                    <div class="product-specs">
+                        <p>Độ cứng: 9H</p>
+                        <p>Chống vân tay: Có</p>
+                        <p>Độ trong: 99%</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">250.000đ</span>
+                        <span class="original-price">350.000đ</span>
+                    </div>
+                    <button class="buy-btn">Mua Ngay</button>
+                </div>
+        
+                <!-- Sạc không dây -->
+                <div class="product-card">
+                    <img src="https://cdn.tgdd.vn/Products/Images/9499/202328/sac-khong-day-qi-10w-mbp-x-wb-01-den-avatar-1-600x600.jpg" alt="Sạc không dây">
+                    <h3>Sạc Không Dây Qi 10W</h3>
+                    <div class="product-specs">
+                        <p>Công suất: 10W</p>
+                        <p>Chuẩn Qi: Có</p>
+                        <p>Tương thích: Đa thiết bị</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">450.000đ</span>
+                        <span class="original-price">550.000đ</span>
+                    </div>
+                    <button class="buy-btn">Mua Ngay</button>
+                </div>
+        
+                <!-- Tai nghe có dây -->
+                <div class="product-card">
+                    <img src="https://cdn.tgdd.vn/Products/Images/54/243055/tai-nghe-ep-lightning-apple-mmtn2-trang-thumb-600x600.jpeg" alt="Tai nghe có dây Apple">
+                    <h3>Tai Nghe EarPods Lightning</h3>
+                    <div class="product-specs">
+                        <p>Jack cắm: Lightning</p>
+                        <p>Tích hợp mic: Có</p>
+                        <p>Dây dài: 1.2m</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">590.000đ</span>
+                        <span class="original-price">790.000đ</span>
+                    </div>
+                    <button class="buy-btn">Mua Ngay</button>
+                </div>
+        
+                <!-- Giá đỡ điện thoại -->
+                <div class="product-card">
+                    <img src="https://cdn.tgdd.vn/Products/Images/1955/238008/gia-do-dien-thoai-xe-hoi-tu- cao-avantree-thumb-600x600.jpeg" alt="Giá đỡ điện thoại">
+                    <h3>Giá Đỡ Điện Thoại Xe Hơi Tu Cảo</h3>
+                    <div class="product-specs">
+                        <p>Chất liệu: Nhựa cao cấp</p>
+                        <p>Tương thích: Đa thiết bị</p>
+                        <p>Độ bền: Cao</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">350.000đ</span>
+                        <span class="original-price">450.000đ</span>
+                    </div>
+                    <button class="buy-btn">Mua Ngay</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="detailed-categories">
+            <div class="category-section">
+                <h2>Danh Mục Chi Tiết</h2>
+                <div class="subcategories">
+                    <div class="subcategory">
+                        <h4>Sạc & Cáp</h4>
+                        <ul>
+                            <li>Sạc nhanh iPhone</li>
+                            <li>Sạc không dây</li>
+                            <li>Cáp Lightning</li>
+                            <li>Cáp Type-C</li>
+                        </ul>
+                    </div>
+                    <div class="subcategory">
+                        <h4>Tai Nghe</h4>
+                        <ul>
+                            <li>Tai nghe không dây</li>
+                            <li>Tai nghe có dây</li>
+                            <li>Tai nghe gaming</li>
+                            <li>Tai nghe thể thao</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="special-offers">
+            <h2>Ưu Đãi Đặc Biệt</h2>
+            <div class="offer-grid">
+                <div class="offer-card">
+                    <h3>Giảm 20%</h3>
+                    <p>Cho tất cả phụ kiện Apple</p>
+                    <span class="offer-code">APPLE20</span>
+                </div>
+                <div class="offer-card">
+                    <h3>Mua 2 Tặng 1</h3>
+                    <p>Áp dụng cho ốp lưng</p>
+                    <span class="offer-code">BUY2GET1</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="warranty-info">
+            <h2>Thông Tin Bảo Hành</h2>
+            <div class="warranty-grid">
+                <div class="warranty-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Bảo Hành Chính Hãng</h3>
+                    <p>12 tháng cho sản phẩm chính hãng</p>
+                </div>
+                <div class="warranty-card">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Đổi Trả Miễn Phí</h3>
+                    <p>30 ngày đổi trả nếu lỗi nhà sản xuất</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="footer">
+        <div class="footer_row">
+            <div>
+                <div>
+                    <div>
+                        <span>KẾT NỐI VỚI INNOWAVE</span>
+                        <div class="icon">
+                            <a href="https://www.facebook.com/ngu.minh.564" target="_blank"><i class="fa-brands fa-facebook" style="color: #3b5998; font-size: 30px;"></i></a>
+                            <a href="https://x.com/" target="_blank"><i class="fa-brands fa-twitter" style="color: #1da1f2; font-size: 30px;"></i></a>
+                            <a href="https://www.instagram.com/t1faker_fanpage?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fa-brands fa-instagram" style="color: #e1306c; font-size: 30px;"></i></a>
+                            <a href="https://www.youtube.com/@dzunglm" target="_blank"><i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 30px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Tong_dai">
+                <div>
+                    <div>
+                        <span>TỔNG ĐÀI MIỄN PHÍ</span>
+                        <div>
+                             <p>Hỗ trợ kỹ thuật: 1800.1234 (8h00-22h00)</p>
+                        </div>
+                        <div>
+                            <p>Góp ý khiếu nại: 1800.5678 (8h00-22h00)</p>
+                        </div>
+                        <div>
+                            <p>Gọi bảo hành 1800.9977 (8h00 - 21h00)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Cham_soc_khach_hang">
+                <div>
+                    <div>
+                        <span>CHĂM SÓC KHÁCH HÀNG</span>
+                        <div>
+                            <p>Chính sách đổi trả</p>
+                            <p>Chính sách bảo hành</p>
+                            <p>Chính sách giao hàng</p>
+                            <p>Chính sách bảo mật</p>
+                            <p>Chính sách thanh toán</p>
+                            <p>Chính sách bảo mật</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Ho_tro_thanh_toan">
+                <div>
+                    <span>HỖ TRỢ THANH TOÁN</span>
+                    <div>
+                        <div>
+                            <img src="images/ACB.png" alt="">
+                            <img src="images/agribank.jpg" alt="">
+                            <img src="images/mb.jpg" alt="">
+                            <img src="images/napas.png" alt="">
+                            <img src="images/SaigonBank.jpg" alt="">
+                            <img src="images/Shinhan-Bank.jpg" alt="">
+                            <img src="images/techcombankpng.png" alt="">
+                            <img src="images/vietcombank.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_row2">
+            <hr>
+            <div>
+                <div>
+                    <div>
+                        <p>Địa chỉ: Tổ dân phố số 5, Thị trấn cồn, huyện Hải Hậu, tỉnh Nam Định</p>
+                        <p>Hotline: 1900 1234</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <script src="https://app.tudongchat.com/js/chatbox.js"></script>
+    <script>
+        const tudong_chatbox = new TuDongChat('_1x_s-qxJwDsz0QRRF5Fw')
+        tudong_chatbox.initial()
+    </script>
+    <script>
+        // Thêm hiệu ứng hover cho các nút
+        document.querySelectorAll('.buy-btn').forEach(button => {
+            button.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            button.addEventListener('mouseout', function() {
+                this.style.transform = ' scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>'

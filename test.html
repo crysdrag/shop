@@ -1,0 +1,38 @@
+<div class="product">
+    <img class="product-image" src="${product.image}" alt="${product.model}" />
+    <div class="product-info">
+        <p class="product-name">${product.model} <span>${formattedPrice} VNĐ</span> </p>
+        <p class="product-specs">${product.ram} / ${product.storage}</p>
+    </div>
+</div>
+
+<style>
+    .product {
+        width: 200px;
+        display: inline-flex;
+        align-items: center;
+        background-color: white;
+        border-radius: 10px;
+    }
+    .product-image {
+        width: 50px;
+        height: auto;
+    }
+    .product-info {
+        /* text-align: start; */
+        padding-left: 10px;
+        line-height: 0;
+    }
+    .product-name {
+        font-size: 10px;
+        font-weight: bold;
+        color: #444;
+    }
+    .product-name > span {
+        color: red;
+    }
+    .product-specs {
+        font-size: 12px;
+        color: #444444a7;
+    }
+</style>
