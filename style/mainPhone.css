@@ -1,0 +1,707 @@
+body {
+    padding-top: 200px;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background-color: #f0f0f0;
+    height: fit-content;
+}
+.menu_bar{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    padding-bottom: 1em;
+}
+.menu_bar a{
+    width: fit-content;
+    padding: 0 0.5em;
+    text-decoration: none;
+    color: rgb(110, 110, 110);
+    cursor: pointer;
+}
+.menu_bar a:hover{
+  color: red;
+}
+.main header {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    /* height: 9em; */
+}
+.main header > div {
+    width: 85%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main header > div > span {
+    font-size: 3em;
+    width: fit-content;
+}
+.main header > div > div > div  {
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    height: 100%;
+}
+.main header > div > div > div > span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #444;
+    display: flex;
+    justify-content: start;
+    padding-bottom: 0.3em;
+}
+.main header > div > div > div > div {
+    padding: 0 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main header > div > div > div > div > a {
+    /* color: red; */
+    color: #444444bc;
+    text-decoration: inherit;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 10px;
+    background-color: #e4dfdf5b;
+    padding: 0.5em;
+}
+.main header > div > div > div > div > a:hover {
+    background-color: #e4dfdf;
+    color: #444;
+}
+.main header > div img {
+    width: 15em;
+    height: auto;
+}
+.main .slideQCC {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+.main .slideQCC .swiper {
+    width: 100%;
+    height: 100%;
+}
+.main .slideQCC .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main .slideQCC .swiper-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.main .slideQCC > div {
+    width: 85%;
+    height: fit-content;
+    display: flex;
+    justify-content: start;
+    padding-top: 0.5em;
+}
+.main .KM {
+    padding-top: 1em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.main .KM > div {
+    width: 85%;
+    display: flex;
+    justify-content: start;
+    padding-top: 0.5em;
+    height: fit-content;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.main .KM > div > div {
+    width: 100%;
+}
+.main .KM .content {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding: 0 1%;
+}
+.content-div {
+    display: none;
+    width: 100%;
+    height: fit-content;
+}
+.content-div > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+.content-div > div > div {
+    width: 95%;
+}
+.content-div .swiper {
+    width: 100%;
+    height: 100%;
+}
+.content-div .swiper-slide {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Hiển thị div1 ban đầu */
+#Khuyen_mai_hot {
+    display: block;
+}
+
+/* Style cho các div để nhấn */
+.toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 25%;
+    /* max-width: fit-content; */
+    padding: 2%;
+    padding-right: none;
+    /* padding: 0 2%; */
+}
+.toggle > span {
+    /* font-size: 100%; */
+    width: fit-content;;
+    padding-left: 2%;
+    font-weight: bold;
+    color: #444;
+}
+.active {
+    color: red;
+    border-bottom: 2px solid red;
+}
+.active > span {
+    color: red;
+}
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container {
+    padding-top: 3em;
+}
+.container .filter > span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #444;
+    padding-bottom: 0.5em;
+}
+.container .filter {
+    width: 85%;
+}
+.filter_contain {
+    position: absolute;
+    z-index: 1; /* Đảm bảo nó nằm trên các phần tử khác */
+}
+.container .filter > div {
+    padding-top: 1em;
+    display: flex;
+    width: 370px;
+    justify-content: space-between;
+}
+.container > div > div > label {
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.2em 0.5em;
+    border-radius: 10px;
+    background-color: #e4dfdf5b;
+    border: 1px solid #e4dfdf;
+}
+#contain-1, #contain-2, #contain-3, #contain-4 {
+    display: none;
+}
+    /* Hiển thị phần tử khi radio button tương ứng được chọn */
+#tab1:checked ~ #contain-1,
+#tab2:checked ~ #contain-2,
+#tab3:checked ~ #contain-3,
+#tab4:checked ~ #contain-4 {
+    display: block; /* Chỉ hiển thị phần tử tương ứng với tab đã chọn */
+}
+
+.container input[type="radio"] {
+    display: none;
+}
+    /* Style cho nhãn của tab đang chọn */
+.container input[type="radio"]:checked + label {
+    background-color: #fef2f2;
+    border: 1px solid #d70018;
+    color: #d70018;
+}
+.filter-container {
+    position: relative;
+}
+#contain-1::before {
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: "";
+    left: 30px;
+    position: absolute;
+    top: -9px;
+}
+#contain-1 {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 10px;
+    background-color: white;
+    left: 0;
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+#contain-1 .filter_contain_1 {
+    display: flex;
+    justify-content: space-around;
+}
+#contain-1 .filter_contain_1 .contain {
+    display: flex;
+    flex-direction: column;
+}
+#contain-1 .filter_contain_1 .contain > div + div {
+    display: flex;
+    width: 300px;
+    flex-wrap: wrap;
+}
+#contain-1 .filter_contain_1 .contain > div:nth-child(1) {
+    padding-bottom: 0.5em;
+    font-size: 20px;
+    font-weight: bold;
+    color: #444;
+}
+#contain-1 input[type="checkbox"] {
+    display: none;
+}
+#contain-1 .filter_contain_1 label {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #444;
+    cursor: pointer;
+}
+#contain-1 input[type="checkbox"]:checked + label {
+    background-color: #fef2f2;
+    border: 1px solid #d70018;
+    color: #d70018;
+}
+#contain-1 .filter_contain_1 .contain > div:nth-child(2) > div {
+    padding: 0.2em;
+}
+#contain-1 > div > div:nth-child(2) > div {
+    padding: 0.5em;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+#contain-1 > div > div:nth-child(2) {
+    padding-top: 1em;
+    display: flex;
+}
+#contain-1 > div > div:nth-child(2) > div:nth-child(1) {
+    background: #feecf0;
+    color: #cc0f35;
+    width: 120px;
+    text-align: center;
+}
+#contain-1 > div > div:nth-child(2) > div:nth-child(2) {
+    background: #d00;
+    color: #fff;
+    width: 180px;
+    text-align: center;
+    margin-left: 10px;
+}
+#contain-2::before {
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: "";
+    left: 30px;
+    position: absolute;
+    top: -9px;
+}
+#contain-2 {
+    width: 350px;
+    height: fit-content;
+    position: absolute;
+    top: 10px;
+    background-color: white;
+    left: 90px;
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+#contain-2 > div {
+    display: flex;
+    letter-spacing: normal;
+    flex-wrap: wrap;
+    text-align: left;
+}
+#contain-2 > div > div {
+    padding: 0.2em 0.2em;
+}
+#contain-2 input[type="checkbox"] {
+    display: none;
+}
+#contain-2 label {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #444;
+    cursor: pointer;
+}
+#contain-2 input[type="checkbox"]:checked + label {
+    background-color: #fef2f2;
+    border: 1px solid #d70018;
+    color: #d70018;
+}
+#contain-2 > div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    padding-top: 1em;
+}
+#contain-2 > div:nth-child(2) > div {
+    padding: 0.5em;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+#contain-2 > div:nth-child(2) > div:nth-child(1) {
+    background: #feecf0;
+    color: #cc0f35;
+    width: 120px;
+    text-align: center;
+}
+#contain-2 > div:nth-child(2) > div:nth-child(2) {
+    background: #d00;
+    color: #fff;
+    width: 180px;
+    text-align: center;
+    margin-left: 10px;
+}
+#contain-3::before {
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: "";
+    left: 30px;
+    position: absolute;
+    top: -9px;
+}
+#contain-3 {
+    width: 350px;
+    height: fit-content;
+    position: absolute;
+    top: 10px;
+    left: 165px;
+    background-color: white;
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+#contain-3 > div {
+    display: flex;
+    letter-spacing: normal;
+    flex-wrap: wrap;
+    text-align: left;
+}
+#contain-3 > div > div {
+    padding: 0.2em 0.2em;
+}
+#contain-3 input[type="checkbox"] {
+    display: none;
+}
+#contain-3 label {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #444;
+    cursor: pointer;
+}
+#contain-3 input[type="checkbox"]:checked + label {
+    background-color: #fef2f2;
+    border: 1px solid #d70018;
+    color: #d70018;
+}
+#contain-3 > div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    padding-top: 1em;
+}
+#contain-3 > div:nth-child(2) > div {
+    padding: 0.5em;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+#contain-3 > div:nth-child(2) > div:nth-child(1) {
+    background: #feecf0;
+    color: #cc0f35;
+    width: 120px;
+    text-align: center;
+}
+#contain-3 > div:nth-child(2) > div:nth-child(2) {
+    background: #d00;
+    color: #fff;
+    width: 180px;
+    text-align: center;
+    margin-left: 10px;
+}
+#contain-4::before {
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: "";
+    left: 30px;
+    position: absolute;
+    top: -9px;
+}
+#contain-4 {
+    width: 350px;
+    height: fit-content;
+    position: absolute;
+    top: 10px;
+    left: 245px;
+    background-color: white;
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+#contain-4 > div {
+    display: flex;
+    letter-spacing: normal;
+    flex-wrap: wrap;
+    text-align: left;
+}
+#contain-4 > div > div {
+    padding: 0.2em 0.2em;
+}
+#contain-4 input[type="checkbox"] {
+    display: none;
+}
+#contain-4 label {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #444;
+    cursor: pointer;
+}
+#contain-4 input[type="checkbox"]:checked + label {
+    background-color: #fef2f2;
+    border: 1px solid #d70018;
+    color: #d70018;
+}
+#contain-4 > div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    padding-top: 1em;
+}
+#contain-4 > div:nth-child(2) > div {
+    padding: 0.5em;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+#contain-4 > div:nth-child(2) > div:nth-child(1) {
+    background: #feecf0;
+    color: #cc0f35;
+    width: 120px;
+    text-align: center;
+}
+#contain-4 > div:nth-child(2) > div:nth-child(2) {
+    background: #d00;
+    color: #fff;
+    width: 180px;
+    text-align: center;
+    margin-left: 10px;
+}
+    /* Hiển thị phần tử khi radio button tương ứng được chọn */
+.smphone {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-left: 20px; */
+}
+.smphone > div {
+    padding: 1em 0;
+    box-shadow: 0 0 10px 0 #0000005e;
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}
+.product-container {
+    padding: 0 0.5em;
+    overflow-y: hidden;
+    width: 90%;
+    /* max-width: 90%; */
+    /* display: flex; */
+    /* flex-direction: row; */
+}
+.san_pham {
+    display: inline-block;
+    width: 200px;
+    /* width: 17.5%; */
+    margin: 0.5em auto;
+}
+.them-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* overflow-y: hidden; */
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.them-item > .them_item {
+    box-shadow: 0 0 10px 0 #0000005e;
+    border-radius: 15px;
+    background: #e9e9e9;
+    font-weight: bold;
+    color: #444;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+    height: 50px;
+    cursor: pointer;
+}
+.them-item > .them_item:hover {
+    background: #feecf0;
+    color: #cc0f35;
+    border: 1px solid #d70018;
+}
+.close-btn:hover, .xem_ket_qua:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.218);
+}
+.container .Sap_xep {
+    width: 85%;
+}
+.Sap_xep > div:nth-child(1) span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #444;
+    padding-bottom: 0.5em;
+}
+.Sap_xep > div:nth-child(2) {
+    display: flex;
+    justify-content: start;
+    /* padding-top: 1em; */
+}
+.Sap_xep > div:nth-child(2) button {
+    cursor: pointer;
+    background-color: #e4dfdf5b;
+    border: 1px solid #e4dfdf;
+    border-radius: 10px;
+    margin: 0.5em 0.2em;
+    color: black;
+    font-size: 17px;
+}
+.Sap_xep > div:nth-child(2) button:active {
+    background: #feecf0;
+    color: #cc0f35;
+    border: 1px solid #d70018;
+}
+@media screen and (max-width: 1477px) {
+    .product-container {
+        max-width: 95%;
+    }
+    main .KM .content {
+        width: 100%;
+        justify-content: start;
+        padding: 0;
+    }
+    .main .KM .content .toggle {
+        width: 100%;
+        /* padding: 0 px 0 0; */
+        /* font-size: 13px; */
+    }
+    /* .san_pham {
+        width: 170px;
+    } */
+}
+@media screen and (max-width: 1292px) {
+    .main header > div img {
+        display: none;
+    }
+    .main header > div > div > div:nth-child(3) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .main header > div > div > div:nth-child(3) > div {
+        padding: 10px 5px;
+    }
+    .main .KM .content {
+        width: 100%;
+        justify-content: start;
+        padding: 0;
+    }
+    .main .KM .content .toggle {
+        width: 100%;
+        padding: 0 5px 0 0;
+        /* font-size: 13px; */
+    } 
+    /* .san_pham {
+        width: 163px;
+    } */
+}
+@media screen and (max-width: 607px){
+    .main .KM .content .toggle {
+        font-size: 13px;
+    }
+}

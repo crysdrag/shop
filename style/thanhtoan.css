@@ -1,0 +1,77 @@
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: Arial, sans-serif;
+}
+
+.pay {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    max-width: 600px;
+    padding: 30px;
+}
+h4 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+input[type="text"], select, textarea {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+#check-pay {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+    width: 100px;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+    
+}
+
+#check-pay:hover {
+    background-color: #45a049;
+}
+.check-pay {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.check-pay input[type="radio"] {
+    margin-right: 10px;
+}
+input[type="text"]:hover, select:hover, textarea:hover {
+    border-color: #999;
+}
+@media (max-width: 600px) {
+    .pay {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    input[type="text"], select, textarea, #check-pay {
+        font-size: 14px;
+    }
+}

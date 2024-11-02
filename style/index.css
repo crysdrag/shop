@@ -1,0 +1,467 @@
+
+.swiper-wrapper {
+    height: fit-content;
+}
+.main {
+    width: 100%;
+    margin-top: 21vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main .VideoVideo {
+    /* box-shadow: 0 0 10px 0 #0000005e; */
+    width: 100%;
+    padding-top: 2%;
+    height: fit-content;
+    background: linear-gradient(to bottom, #333333, #cccccc, #f0f0f0);
+}
+.main .video {
+    width: 86%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.main .MainMainMenu {
+    background-color: white;
+    width: 44%;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #0000005e;
+    padding: 10px;
+}
+.main .MainMainMenu .mainMenu {
+    border-radius: 10px;
+}
+.main .MainMainMenu .mainMenu .mainMenu1 {
+    padding: 0.3em;
+}
+.main .MainMainMenu .mainMenu .mainMenu1 > span {
+    font-size: 25px;
+    font-weight: bold;
+    color: #444;
+}
+.main .MainMainMenu .mainMenu .mainMenu1 > div {
+    padding: 1em 0.3em 0.3em 0.3em;
+}
+.main .MainMainMenu .mainMenu .mainMenu1 > div > div {
+    overflow: auto;
+    padding: 10px;
+    height: 12em;
+    border: 1px solid #444;
+    border-radius: 10px;
+}
+.main .MainMainMenu .mainMenu .mainMenu1 .L-SK {
+    padding: 0.2em 0;
+}
+.main .MainMainMenu .mainMenu .mainMenu1 .L-SK > div{
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+.main .MainMainMenu .mainMenu .mainMenu1 .L-SK > div > span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #444;
+}
+.main .MainMainMenu .mainMenu .mainMenu1 .L-SK > div > div > span {
+    font-size: 15px;
+    color: #444;
+}
+.main .video video {
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #0000005e;
+}
+.main .menuMain {
+    display: flex;    
+    justify-content: space-around;
+    padding-top: 0.3em;
+}
+.main .menuMain div {
+    border-radius: 10px;
+    padding: 10px;
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    background-color: #2222224c;
+    box-shadow: 0 0 10px 0 #0000005e;
+}
+.main .slide1 {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.4em;
+}
+.main .slide1 .swiper {
+    border-radius: 10px;
+    padding: 1em 0;
+    box-shadow: 0 0 10px 0 #0000005e;
+    background-color: white;
+    width: 86%;
+    height: auto;
+}
+.main .slide1 .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}      
+.main .slide1 .swiper-slide img {
+    display: block;
+    width: 90%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.main .slide1 .swiper-button-next_1, .swiper-button-prev_1 {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: rebeccapurple;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #ede5e5;
+    text-align: center;
+}
+/* Khi hover vào vùng slider */
+.main .slide1 .slide11:hover .swiper-button-next_1, .slide11:hover .swiper-button-prev_1 {
+    opacity: 1; /* Hiện nút khi hover */
+}
+.main .slide1 .swiper-button-prev_1::after, .swiper-button-next_1::after {
+    font-size: 30px; /* Kích thước mũi tên */
+    color: #000; /* Màu sắc mũi tên */
+    font-weight: bold;
+}
+.main .sale {
+    padding-top: 3em;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-wrap: wrap; */
+}
+.main .SM_hot{
+    box-shadow: 0 0 10px 0 #0000005e;
+    padding: 10px;
+    border-radius: 10px;
+    height: fit-content;
+    background: linear-gradient(rgb(248, 62, 96), rgb(254, 80, 72)) 0% 0% / cover;
+    width: 85%;  
+    /* margin: auto; */
+}
+.main .SM_hot .swiper {
+    margin: auto;
+    width: 98%;
+    /* height: 100%; */
+    /* padding: 10px; */
+}
+.main .SM_hot > span {
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+}
+.main .sale .swiper-button-next_2, .swiper-button-prev_2 {
+    transition: opacity 0.3s ease;
+    color: rebeccapurple;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #ede5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+}
+.main .next_prev {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.main .sale .swiper-button-prev_2::after, .swiper-button-next_2::after {
+    font-size: 30px; /* Kích thước mũi tên */
+    color: #000; /* Màu sắc mũi tên */
+    font-weight: bold;
+}
+.main .slide222 {
+    display: flex;
+    justify-content: center;
+    padding-top: 3em;
+    width: 100%;
+}
+.main .slide222 .swiper {
+    width: 100%;
+    box-shadow: none;
+}
+.main .slide2 {
+    height: fit-content;
+    padding: 1em 0;
+    box-shadow: 0 0 10px 0 #0000005e;
+    width: 86%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.main .slide2 .swiper-button-next_3, .swiper-button-prev_3 {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: rebeccapurple;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #ede5e5;
+    text-align: center;
+}
+/* Khi hover vào vùng slider */
+.main .slide2 .slide22:hover .swiper-button-next_3, .slide22:hover .swiper-button-prev_3 {
+    opacity: 1; /* Hiện nút khi hover */
+}
+.main .slide2 .swiper-button-prev_3::after, .swiper-button-next_3::after {
+    font-size: 30px; /* Kích thước mũi tên */
+    color: #000; /* Màu sắc mũi tên */
+    font-weight: bold;
+}
+.main .ipadSale .swiper-button-next_4, .swiper-button-prev_4 {
+    transition: opacity 0.3s ease;
+    color: rebeccapurple;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #ede5e5;
+    position: static;
+}
+.main .ipadSale .swiper-button-prev_4::after, .swiper-button-next_4::after {
+    font-size: 30px; /* Kích thước mũi tên */
+    color: #000; /* Màu sắc mũi tên */
+    font-weight: bold;
+}
+
+.main .ipadSale {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+.main .Ipad_hot{
+    box-shadow: 0 0 10px 0 #0000005e;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    height: 520px;
+    width: 84.5%;  
+}
+.main .Ipad_hot .swiper {
+    margin: auto;
+    width: 98%;
+    height: 100%;
+    padding: 10px;
+}
+.main .Ipad_hot > span {
+    color: #444;
+    font-size: 30px;
+    font-weight: bold;
+}
+.smart {
+    width: 100%; 
+    height: fit-content;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: fit-content; 
+    padding-top: 3em;
+    padding-bottom: 1em;
+    flex-wrap: wrap;
+}
+.smart > div > span {
+    font-size: 25px;
+    font-weight: bold;
+    color: #444; 
+    padding: 10px 20px;
+}
+.smart > div {
+    height: fit-content;
+    width: 86%;
+    box-shadow: 0 0 10px 0 #0000005e;
+    border-radius: 10px;
+    display: flex; 
+    justify-content: start; 
+    align-items: center;
+    background-color: white;
+
+}
+.smart > div > div {
+    display: flex;
+    padding-left: 20px;
+    width: 50em;
+    height: fit-content;
+    justify-content: space-between;
+}
+/* .smart > div > div > div {
+    padding: 0 10px;
+} */
+.smart .smartNB span{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 13px;
+}
+@media screen and (max-width: 1050px){
+    .smart > div {
+        /* width: fit-content; */
+        height: 100px;
+        padding: 10px;
+    }
+    .smart > div > span {
+        font-size: 20px;
+        padding: 0;
+    }
+    .smart > div > div {
+        /* padding: 0; */
+        width: 100%;
+        height: 100px;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .smart .smartNB span {
+        font-size: 12px;
+    }
+}
+.ho_tro {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+.ho_tro > div {
+    display: flex;
+    justify-content: space-between;
+    /* text-align: center; */
+    width: 85%;
+}
+.ho_tro > div i {
+    font-size: 40px;
+    height: fit-content;
+}
+.ho_tro > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    width: 100%;
+}
+#results {
+    display: none; 
+    position: absolute; 
+    background-color: white; 
+    box-shadow: 0 0 10px 0 black;
+    width: 320px; 
+    z-index: 1; 
+    top: 50px; 
+    left: 41.5%; 
+    border-radius: 10px; 
+    padding: 0.5em 1em;
+}
+#myVideo {
+    width: 53.8%;
+    height: auto;
+}
+.san_pham {
+    box-sizing: border-box;
+    width: 90%;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: box-shadow 0.3s;
+    text-align: center;
+}
+.san_pham:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.img_phone img {
+    width: 80%;
+    height: auto;
+    background-color: white;
+}
+
+.Chi_tiet .Thong_So {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.Chi_tiet .Thong_So span {
+    flex: 1;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.Chi_tiet .money .tien {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.SM_hot >img {
+    height: 60px;
+    width: fit-content;
+}
+@media screen and (max-width: 1222px){
+    .video {
+        width: 100%;
+    }
+    #myVideo {
+        width: 100%;
+        height: auto;
+    }
+    .main .MainMainMenu {
+        display: none;
+    }
+}
+@media screen and (max-width: 765px) {
+    .san_pham {
+        width: 85%;
+        padding: 5px;
+    }
+}
+@media screen and (max-width: 678px) {
+    .main {
+        margin-top: 8.2vh;
+    }
+    .SM_hot >img {
+        height: 40px;
+        width: fit-content;
+    }
+    .SM_hot {
+        width: 100%;
+    }
+    .img_phone img {
+        width: 100%;
+    }
+
+    .Chi_tiet .Thong_So span {
+        font-size: 12px;
+    }
+
+    .Chi_tiet .money .tien {
+        font-size: 18px;
+    }
+
+    .swiper-button-next_2, .swiper-button-prev_2 {
+        width: 40px;
+        height: 40px;
+    }
+}

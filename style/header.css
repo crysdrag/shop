@@ -1,0 +1,542 @@
+:root {
+    --div-width: 160px;
+}
+* {
+    font-family: Roboto,sans-serif;
+    box-sizing: inherit;
+}
+html {
+    overflow-x: auto;
+}
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: #f0f0f0;
+    z-index: -99999;
+    height: 100%;
+    overflow-x: auto;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+/* Màn hình tối */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 100; /* Tăng z-index lên để nó nằm trên các thành phần khác */
+}
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 8%;
+    color: #ccc;
+    box-shadow: 0 0 10px 0 #0000005e;
+    z-index: 1000;
+}
+.header section {
+    width: 100%;
+    background: linear-gradient(to right, #333333, #cccccc, #333333);
+    /* background: linear-gradient(135deg, #090505 0%, rgb(78, 141, 242) 100%); */
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+} 
+.header section .swiper {
+    width: 50%;
+    height: fit-content;
+    margin-left: 40px;
+    padding-top: 1em;
+}
+.header section .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: white;
+    font-weight: bold;
+}
+.header section .swiper-slide span {
+    margin-left: 10px;
+}
+.hotline div, .hotline a {
+    color: white;
+    font-weight: bold;
+    padding: 0 0.3em;
+}
+.hotline {
+    display: flex;
+    width: fit-content;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-around;
+}
+.headerMain_main {
+    display: flex;
+    background-color: #222;
+    justify-content: space-around;
+    align-items: center;   
+    position: relative; 
+    padding: 0 2em;
+}
+.headerMain_main .logo i {
+    font-size: 20px;
+    color: white;
+    background-color: hsla(0,0%,100%,.2);
+    padding: 10px;
+    border: 3px solid white;
+    border-radius: 10px;
+}
+.headerMain_main .logo span {
+    width: 55px;
+    height: 55px;
+    font-size: 25px;
+    color: white;
+}
+.menu {
+    /* position: absolute; */
+    padding: 0.5em;
+}
+.headerMain_main .menu, .shoping {
+    width: var(--div-width);
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    /* position: relative; */
+}
+.headerMain_main .menu div {
+    border-radius: 10px;
+    background-color: hsla(0,0%,100%,.2);
+    color: white;
+    font-weight: normal;
+    padding: 0.5em 1em;
+}
+.headerMain_main .shoping div {
+    border-radius: 10px;
+    background-color: hsla(0,0%,100%,.2);
+    font-weight: normal;
+    padding: 0.5em 1em;
+}
+.headerMain_main .shoping div a {
+    color: white;
+}
+.headerMain_main .search {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: fit-content;
+    box-sizing: border-box;
+}
+.search > div {
+    border-radius: 50px;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    padding: 0.2em;
+}
+.headerMain_main .search input {
+    width: 100%;
+    border: none;
+    font-size: 100%;
+    padding: 0 10px;
+    height: 20px;
+    background-color: aliceblue;
+}
+.headerMain_main .search input:focus {
+    outline: none;
+    border: none;
+}
+.headerMain_main .search button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    position: relative;
+    /* right: 5px; */
+    /* padding: auto; */
+    text-align: center;
+    font-size: 15px;
+    border-radius: 50%;
+    box-sizing: border-box;
+}   
+.headerMain_main .user {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    padding: 15px;
+}
+/* .headerMain_main .user i {
+    width: 14px;
+} */
+.headerMain_main .user div {
+    padding: 5px;
+    border-radius: 50%;
+    background-color: hsla(0,0%,100%,.2);
+    width: 24px;
+    height: 24px;
+    transform: scale(1.2);
+}
+.headerMain_main .user div a i {
+    color: rgb(210, 216, 221);
+}
+.main-menu {
+    box-shadow: 0 0 10px 0 #0000005e;
+    width: var(--div-width);
+    height: fit-content;
+    font-size: 1.2em;
+    left: 20%;
+    top: 100%;    
+    transform: translateX(0);
+    border-radius: 10px;
+    position: absolute;
+    padding-top: 0.5em;
+    padding-right: 0.5em;
+    /* padding: 0.5em; */
+    background-color: white;
+    display: none;
+    z-index: 1000;
+}
+.main-menu .item {  
+    position: relative;
+    left: 10px; 
+    padding: 0 0.5em;
+}
+.main-menu hr {
+    width: 92%;
+    position: relative;
+    right: 6px;
+}
+.main-menu .icon {
+    /* padding: 0 1em; */
+    position: relative;
+    right: 20px;
+}
+.main-menu .icon a{
+    padding: 0.2em 0;
+}
+.main-menu .icon:hover a {
+    background-color: #ccc;
+    border-radius: 10px;
+    /* padding-left: 20px; */
+    /* padding: 10px 10px 10px 5px; */
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+.main-menu .main-DT:hover + .mainMain-phone, .mainMain-phone:hover{
+    display: block;
+    z-index: 10;
+}
+.menu:hover + .mainMain-menu .main-menu, .main-menu:hover {
+    display: block;
+    z-index: 10;
+}
+.icon:hover div{
+    background-color: #e4dfdf5b;
+    border-radius: 10px;
+}
+.mainMain-phone .mainMainPhone {
+    position: absolute;
+    top: 0.1rem;
+    left: 101%;
+    /* padding: 0 0.1em; */
+    width: fit-content;
+    display: flex;
+    height: 500px;
+    box-shadow: 0 0 10px 0 #0000005e;
+    border-radius: 10px;
+}
+.mainMain-phone {
+    display: none;
+} 
+.mainMain-phone .mainMainPhone .main-phone {
+    /* padding: 10px; */
+    padding: 0.5em;
+    border-radius: 10px 0 0 10px;
+    box-sizing: border-box;
+    margin-top: -1px;
+    width: fit-content;
+    background-color: white; 
+    overflow: auto;
+}
+.mainMain-phone .mainMainPhone .main-phone .rowRow{
+    display: flex;
+}
+.mainMain-phone .mainMainPhone .main-phone .row .row1{
+    margin: 10px;
+    line-height: 1.2;
+}
+.mainMain-phone .mainMainPhone .main-phone .row .row1 > a{
+    font-size: 20px;
+    font-weight: bold;
+}
+.mainMain-phone .mainMainPhone .main-phone .row .row1 a:hover{
+    border-bottom: 1px solid black;
+    padding-bottom: 0;
+}
+.mainMain-phone .mainMainPhone .main-phone .row .row1 div {
+    margin: 5px 0;
+    width: auto;
+}
+.mainMain-phone .mainMainPhone .main-phone .row .row1 div > a{
+    font-size: 16px;
+    padding: 10px;
+}
+.mainMain-phone .mainMainPhone .main-phone , .main-hot span{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+.mainMain-PK {
+    display: none;  
+}
+.mainMain-PK .mainMainPK {
+    position: absolute;
+    top: 0.1rem;
+    left: 101%;
+    /* padding: 0 0.1em; */
+    width: fit-content;
+    display: flex;
+    height: 500px;
+    box-shadow: 0 0 10px 0 #0000005e;
+    border-radius: 10px;
+}
+.mainMain-PK .mainMainPK .main-PK {
+    /* padding: 10px; */
+    padding: 0.5em;
+    border-radius: 10px 0 0 10px;
+    box-sizing: border-box;
+    margin-top: -1px;
+    width: fit-content;
+    background-color: white; 
+    overflow: auto;
+}
+.mainMain-PK .mainMainPK .hot-PK {
+    border-left: none;
+    padding: 10px;
+    border-radius: 0 10px 10px 0;
+    box-sizing: border-box;
+    margin-top: -1px;
+    width: 350px;
+    background-color: #f0f0f0;  
+    overflow: auto;
+}
+.mainMain-phone .mainMainPhone .main-hot {
+    border-left: none;
+    padding: 10px;
+    border-radius: 0 10px 10px 0;
+    box-sizing: border-box;
+    margin-top: -1px;
+    width: 350px;
+    background-color: #f0f0f0;  
+    overflow: auto;
+}
+.phone-PL .item {
+    margin-top: 10px;
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 280px;
+}
+.phone-PL .item img {
+    width: 35px;
+    height: auto;
+}
+.phone-PL .item span {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-weight: normal;
+}
+.phone-PL .item a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.phone-PL .item:hover {
+    background-color: #ccc;
+}
+.phone-NB {
+    display: flex;
+    justify-content: space-around;
+}
+.phone-NB .phone {
+    border: 1px solid black;
+    padding: 0 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+.phone-NB .phone span {
+    padding: 0 0 0 10px;
+}
+.phone-NB .phone:hover {
+    background-color: #ccc;
+}
+.phone-NB .phone a {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.main-menu .main_DT {
+    border-radius: 10px 0 0 10px;
+}
+.main-menu .main-DT:hover + .mainMain-phone, .mainMain-phone:hover {
+    display: block;
+}
+.main-menu .main-PK:hover + .mainMain-PK, .mainMain-PK:hover {
+    display: block;
+}
+.phone-NB .phone-PK{
+    width: 100%;
+    font-size: 13px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.accessories .row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+}
+.accessories .row .row1 div {
+    padding: 5px 10px;
+}
+.header .deal {
+    display: flex;
+    position: relative; 
+    background-color: white; 
+    padding: 0 20px; 
+    height: 40px;
+    width: 100%;
+    align-items: center;
+}
+.header .deal div {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    /* font-size: var(--font-size); */
+    /* font-size: 15px; */
+    text-align: center;
+    font-weight: bold;
+}
+.header .deal div span {
+    padding: 0 10px;
+}
+*::-webkit-scrollbar {
+    width: 10px;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+@media screen and (max-width: 1018px) {
+    :root {
+        --div-width: fit-content;
+        --font-size: 5px;
+    }
+    .header section .swiper {
+        display: none;
+    }
+    .header section {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .header .shoping span {
+        display: none;
+    }
+    .header .shoping i {
+        font-size: 17px;
+    }
+    .header .shoping div{
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: hsla(0,0%,100%,.2);
+        width: 24px;
+        height: 24px;
+        transform: scale(1.2);
+        /* font-weight: normal; */
+    }
+}
+
+@media screen and (max-width: 678px) {
+    html {
+        overflow-x: hidden;
+    }
+    .header {
+        /* top: 91%; */
+        /* bottom: 0; */
+    }
+    .header section {
+        display: none;
+    }
+    .header .menu > div span{
+        display: none;
+    }
+    .header .deal {
+        display: none;
+    }
+    .header .headerMain_main {
+        padding: 0 0 0 6em;
+    }
+    .header .menu {
+        position: absolute;
+        left: 0;
+    }
+    .header .main-menu {
+        left: 0;
+        width: 40%;
+        height: 2000px;
+    }
+    .header .main-menu .item {
+        font-size: 25px;
+    }
+    /* .header .logo i{
+        font-size: 10px;
+    } */
+    .header .logo span{
+        font-size: 20px;
+        margin-top: 60px;
+        display: none;
+    }
+    .mainMain-phone .mainMainPhone{
+        display: none;
+    }
+    .mainMain-PK .mainMainPK{
+        display: none;
+    }
+}
+
+iframe[src*="tudongchat.com"] {
+    max-width: 325px !important;  /* Thay đổi kích thước mong muốn */
+    max-height: 450px !important; /* Thay đổi kích thước mong muốn */
+    max-width: 100%; /* Đảm bảo tương thích với các màn hình nhỏ */
+    bottom: 0 !important;
+    position: fixed;       /* Giữ vị trí cố định khi cuộn */
+    bottom: 20px;          /* Khoảng cách từ dưới lên */
+    right: 20px;           /* Khoảng cách từ phải vào /         / Điều chỉnh lại chiều rộng */
+    border-radius: 10px;   /* Bo góc cho khung hộp chat */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Đổ bóng nhẹ */
+    
+  }

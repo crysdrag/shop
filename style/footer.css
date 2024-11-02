@@ -1,0 +1,74 @@
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    background-color: #222;
+    padding-top: 3em;
+    box-shadow: 0 0 10px 0 #0000005e;
+}
+.footer_row {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.footer_row span {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.footer_row p {
+    color: white;
+    font-size: 15px;
+}
+.footer_row2 {
+    text-align: center;
+    width: 100%;
+    /* background-color: #333; */
+    height: fit-content;
+    padding: 1em 0;
+}
+.footer_row2 p {
+    color: white;
+}
+.footer_row .Ho_tro_thanh_toan {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 20%;
+}
+.footer_row > div .icon {
+    padding-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+.Ho_tro_thanh_toan > div > div{
+    padding: 1em;
+}
+.footer_row .Ho_tro_thanh_toan img{
+    width: 3em;
+    height: 2em;
+    border-radius: 10px;
+}
+.footer_row2 > div > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-size: 13px;
+    color: #222;
+}
+@media screen and (max-width: 1150px) {
+    .footer_row {
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+    .footer_row > div {
+        width: 100%;
+        padding: 10px 0;
+    }
+}

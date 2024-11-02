@@ -1,0 +1,145 @@
+.san_pham {
+    box-sizing: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* width: 90%; */
+    height: fit-content;
+    padding: 0;
+    text-align: center;
+    z-index: -10000;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+.san_pham a {
+    text-decoration: none;
+    color: black;
+}
+.san_pham:hover {
+    box-shadow: 0 0 10px 0 #0000005e;
+    /* border-radius: 10px; */
+}
+.san_pham .Tra_gop {
+    display: flex;
+    justify-self: end;
+    border-radius: 10px;
+    padding: 2px 5px;
+    background-color: #0000005e;
+    border: 1px solid #0000005e;
+}
+.san_pham .tra_gop span{
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.san_pham .img_phone {
+    width: 100%;
+    height: auto;
+    margin: 10px auto;
+    background-color: white;
+}
+.san_pham .img_phone img {
+    width: 80%;
+    background-color: white;
+    height: auto;
+}
+.san_pham .Chi_tiet {
+    width: 100%;
+    height: auto;
+}
+.san_pham .Chi_tiet .Thong_So {
+    display: flex;
+    justify-content: space-between;
+}
+.san_pham .Chi_tiet .Thong_So span{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+    width: 30%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.san_pham .Chi_tiet .Thong_tin > div:nth-child(1) > span{
+    width: 100%;
+    font-weight: bold;
+    height: 20px;
+    font-size: 14px;
+}
+.san_pham .Chi_tiet .Thong_tin .storage {
+    display: flex;
+    justify-content: space-between;
+}
+.san_pham .Chi_tiet .Thong_tin .storage button {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 2px 5px;
+}
+.san_pham .Chi_tiet .Thong_tin .money {
+    margin-top: 20px;
+}
+.san_pham .Chi_tiet .Thong_tin .money span {
+    color: grey;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+.san_pham .Chi_tiet .Thong_tin .money .tien {
+    color: red;
+    text-decoration: none;
+    font-size: 25px;
+}
+.san_pham .Chi_tiet .box {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    border-radius: 10px;
+    background-color: rgba(250, 235, 215, 0.227);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: justify;
+    width: 90%;
+    height: 100%;
+}
+.san_pham button {
+    display: flex;
+    cursor: pointer;
+    border: none;
+    margin-left: 50%;
+    margin-top: 10px;
+    background-color: white;
+    font-size: 15px;
+}
+.san_pham button span {
+    display: flex;
+    margin-top: auto;
+}
+#SS1 {
+    display: block;
+}
+#SS2 {
+    display: none;
+}
+.product {
+    display: inline-flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding-bottom: 0.1em;
+}
+.product-image {
+    width: 30px;
+    height: auto;
+}
+.product-info {
+    /* text-align: start; */
+    padding-left: 10px;
+    line-height: 0;
+}
+.product-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: #444;
+}
+.product-name > span {
+    color: red;
+}
+.product-specs {
+    font-size: 10px;
+    color: #444444a7;
+}
