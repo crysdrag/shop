@@ -15,6 +15,7 @@ function isComparingDisplay() {
             So sánh (${listPhone.length})
         `
         isComparing.style.display = 'block';
+
     } else isComparing.style.display = 'none';
 }
 
@@ -31,7 +32,7 @@ compare.innerHTML = `
             <button class="inner_close" id="removePhone1">
                 <i class="fa-solid fa-x small_i"></i>
             </button>
-            <img src="iphone-16-pro-max-tu-nhien-thumb-600x600.jpg" alt="phone_img">
+            <img src="" alt="phone_img">
             <label for="" id="comparePhone1">Phone 1</label>
         </div>
     </div>
@@ -44,7 +45,7 @@ compare.innerHTML = `
         <div class="choosenPhone" id="choosenBoxPhone2" style="display: none;">
             <button class="inner_close" id="removePhone2">
                 <i class="fa-solid fa-x small_i"></i>                </button>
-                <img src="iphone-16-pro-max-tu-nhien-thumb-600x600.jpg" alt="phone_img">
+                <img src="" alt="phone_img">
                 <label for="" id="comparePhone2">Phone 2</label>
             </div>
     </div>
@@ -58,7 +59,7 @@ compare.innerHTML = `
                 <button class="inner_close" id="removePhone3">
                     <i class="fa-solid fa-x small_i"></i>
                 </button>
-                <img src="iphone-16-pro-max-tu-nhien-thumb-600x600.jpg" alt="phone_img">
+                <img src="" alt="phone_img">
                 <label for="" id="comparePhone3">Phone 3</label>
             </div>
         </div>
@@ -85,12 +86,53 @@ check.onclick = () => {
         oldCB.checked = false;
     })
     listPhone.splice(0, listPhone.length);
+
+    const toast = document.getElementById('toast');
+    if(toast) removeToast(toast);
+
     renderChoosingPhone();
     isComparingDisplay();
+
     compare.style.display = 'none';
 }
 document.getElementById('collapseBtn').onclick = () => {
     compare.style.display = 'none';
+}
+
+function showToast(message) {
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.id = 'toast';
+
+    const text = document.createElement("span");
+    text.innerText = message;
+    
+    const button = document.createElement("button");
+    button.innerText = "OK";
+    button.onclick = () => removeToast(toast);
+
+    toast.appendChild(text);
+    toast.appendChild(button);
+
+    const direc = compare.getBoundingClientRect();
+    toast.style.bottom = `165px`
+
+    const container = document.getElementsByTagName("body");
+    container[0].appendChild(toast);
+
+    setTimeout(() => toast.classList.add("show"), 100);
+
+    const autoHide = setTimeout(() => removeToast(toast), 2000);
+    toast.dataset.autoHide;
+}
+
+function removeToast(toast) {
+    toast.classList.remove("show");
+
+    const autoHide = toast.dataset.autoHide;
+    clearTimeout(autoHide);
+
+    setTimeout(() => toast.remove(), 500);
 }
 
 //cập nhật dữ liệu vào list những phone muốn so sánh
@@ -99,13 +141,13 @@ function updateListPhone(brand, productId, checkbox) {
     const product = phones[brand].find(obj => obj.id === productId);
     if (checkbox.checked) {
         if (listPhone.length >= max) {
-            alert(`Bạn chỉ được chọn tối đa ${max} đối tượng.`);
+            showToast(`Bạn chỉ được chọn tối đa 3 đối tượng!`)
             checkbox.checked = false;
         } else {
             listPhone.push(product);
+
             isComparingDisplay();
             compareBox.style.display = 'flex';
-            console.log(listPhone);
             renderChoosingPhone();
         }
     } else {
@@ -119,11 +161,14 @@ function deleteProduct(product) {
 
     if (index > -1) {
         listPhone.splice(index, 1);
+
         renderChoosingPhone();
         isComparingDisplay();
-        // renderCompareData();
-        console.log(listPhone);
     }
+
+    const toast = document.getElementById('toast');
+    if(toast) removeToast(toast);
+
     if (listPhone.length === 0) {
         compareBox.style.display = 'none';
     }
@@ -138,10 +183,13 @@ function renderChoosingPhone() {
     listPhone.forEach((phone, index) => {
         const divToHide = document.getElementById(`compareBtn${index + 1}`);
         divToHide.style.display = 'none';
+
         const divToShow = document.getElementById(`choosenBoxPhone${index + 1}`);
         divToShow.style.display = 'flex';
+
         divToShow.children[0].onclick = () => {
             deleteProduct(phone);
+
             const oldCB = document.getElementById(`${phone.brand}_${phone.id}`);
             oldCB.checked = false;
         };
@@ -152,6 +200,7 @@ function renderChoosingPhone() {
 
     if (listPhone.length <= 1) {
         document.getElementById('confirmBtn').disabled = true;
+
     } else document.getElementById('confirmBtn').disabled = false;
 }
 
@@ -165,9 +214,10 @@ compareBtn.onclick = () => {
 ////////bên này là file comparePhone.html dùng để hiển thị những phone được confirm là so sánh
 
 //hiển thị list được confirm
-function renderCompareData() {
-    const listPhone = JSON.parse(sessionStorage.getItem('listPhone'));
+function renderCompareData(listPhone) {
     const table = document.getElementById('table');
+    const appleIcon = '<i class="fa-brands fa-apple"></i>';
+    const androidIcon = '<i class="fa-brands fa-android"></i>'
 
     for (let j = 1; j < 4; j++) {
         const mainCell = table.rows[0].cells[j];
@@ -176,44 +226,64 @@ function renderCompareData() {
         for (let i = 2; i < 20; i++) {
             table.rows[i].cells[j].textContent = "";
             table.rows[i].cells[j].id = "";
-            // console.log('check');
         }
     }
 
     listPhone.forEach((phone, index) => {
-        const mainCell = table.rows[0].cells[index + 1];
-        const div = mainCell.children[0];
-        const btn = document.createElement('button');
-        btn.innerHTML = `
-            <i class="fa-solid fa-circle-xmark i_nor"></i>
-            <i class="fa-regular fa-circle-xmark i_hover"></i>
-        `
-        btn.classList.add('removeBtn');
-        // const checkbox = document.createElement("input");
-        // checkbox.type = "checkbox";
-        // checkbox.checked = true;
-        // checkbox.onclick = () => {
-        //     deleteProduct(phone);
-        // };
-        // checkbox.classList.add('removeBtn');
-        div.appendChild(btn);
+        const div = document.getElementById(`phone${index + 1}`);
+        const priceNum = phone.price.toLocaleString('vi-VN');
 
-        for (let i = 2; i < 20; i++) {
+        div.innerHTML = `
+            <img src="${phone.image}" alt="${phone.model} ${phone.storage}" class="imgPhone">
+            <span class="phoneName">${phone.model} ${phone.storage}</span>
+            <span class="phonePrice">${priceNum} VNĐ</span>
+            <span class="phoneColor">Màu sắc: ${phone.color}</span>
+            <button class="removeBtn" id="removeBtn${index + 1}">
+                <i class="fa-solid fa-circle-xmark i_nor"></i>
+                <i class="fa-regular fa-circle-xmark i_hover"></i>
+            </button>
+        `
+        document.getElementById(`removeBtn${index + 1}`).onclick = () => {
+            listPhone.splice(index, 1);
+            renderCompareData(listPhone);
+        }
+        for (let i = 2; i < 30; i++) {
             if (table.rows[i]) {
                 let name = table.rows[i].getAttribute('name');
+
                 const cell = table.rows[i].cells[index + 1];
-                // console.log(name);
-                cell.textContent = phone[name];
+                if(phone[name] === true){
+                    cell.textContent = 'Có';
+                    cell.style.color = '#485fc7';
+                }
+                else if(phone[name] === false){
+                    cell.textContent = 'Không';
+                    cell.style.color = 'red';
+                }
+                else cell.textContent = phone[name];
+
+                if(name === 'operatingSystem') {
+                    if(phone.brand === 'apple'){
+                        cell.innerHTML = appleIcon + ' ' + cell.innerHTML;
+                    }
+                    else cell.innerHTML = androidIcon + ' ' + cell.innerHTML;
+                }
                 cell.id = name + "_" + phone.brand + "_" + phone.id;
             }
-        }
+            }
     })
 }
 
+
 if (window.location.pathname.endsWith('comparePhone.html')) {
-    renderCompareData();
-    document.addEventListener('DOMContentLoaded', () => {
-        const table = document.getElementById('table');
-        table.focus();
-    })
+    const listPhone = JSON.parse(sessionStorage.getItem('listPhone'));
+    renderCompareData(listPhone);
+
+    // window.addEventListener('pageshow', () => {
+    //     renderCompareData(listPhone);
+    // })
+
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     renderCompareData(listPhone);
+    // })
 }
