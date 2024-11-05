@@ -378,71 +378,83 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener("DOMContentLoaded", function() {
   const params = new URLSearchParams(window.location.search);
-  const brands = params.get('brand');
-  const id = params.get('id');
-  function convertBrandToLowerCase(brands) {
-      return brands.toLowerCase();
+  const brandParam = params.get('brand');
+  const productId = params.get('id');
+
+  function convertBrandToLowerCase(brand) {
+      return brand ? brand.toLowerCase() : '';
   }
-  const lowerCaseBrand = convertBrandToLowerCase(brands);
-  const brand = lowerCaseBrand;
+
+  const brand = convertBrandToLowerCase(brandParam);
 
   fetch('phone.json')
       .then(response => response.json())
       .then(data => {
-          const productData = data[brand].find(item => item.id === id);
-          const originalVideoUrl = productData.video; // URL video gốc
+          const productData = data[brand]?.find(item => item.id === productId);
 
-          // // Hàm để chuyển đổi URL
-          function convertToEmbedUrl(originalUrl) {
-              const videoId = originalUrl.split('v=')[1].split('&')[0]; // Lấy ID video
-              return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`; // Tạo URL "embed"
-          }
-          const embedUrl = convertToEmbedUrl(originalVideoUrl);
-          console.log(embedUrl);
-
-          if (productData) {
-              // Cập nhật thông tin sản phẩm trong HTML
-              // document.querySelector('.video iframe').src = embedUrl;
-              // document.querySelector('.name').textContent = `${productData.model} | Chính hãng VN/A`;
-              // document.querySelector('.slider_left_top img').src = productData.image;
-              // document.querySelector('.price').textContent = `${productData.priceSale.toLocaleString()}đ`;
-              // document.querySelector('.original-price').textContent = `${productData.price.toLocaleString()}đ`;
-              // document.querySelector('.discount').textContent = `-${productData.sale}%`;
-              // document.querySelector('.batteryCapacity').textContent = productData.batteryCapacity;
-              // ... thêm các thuộc tính khác tương tự
-              document.querySelector('.name2').textContent = `${productData.model}`;
-              document.querySelector('.name').textContent = `${productData.model} | Chính hãng VN/A`;
-              document.querySelector('.brand').textContent = `${productData.brand}`;
-              document.querySelector('.ram').textContent = `${productData.ram}`;
-              document.querySelector('.storage').textContent = `${productData.storage}`;
-              document.querySelector('.batteryCapacity').textContent = `${productData.batteryCapacity}`;
-              document.querySelector('.wired').textContent = `${productData.wired}`;
-              document.querySelector('.wireless').textContent = `${productData.wireless}`;
-              document.querySelector('.cameraSpecs').textContent = `${productData.cameraSpecs}`;
-              document.querySelector('.network').textContent = `${productData.network}`;
-              document.querySelector('.wifi').textContent = `${productData.wifi}`;
-              document.querySelector('.bluetooth').textContent = `${productData.bluetooth}`;
-              document.querySelector('.processor').textContent = `${productData.processor}`;
-              document.querySelector('.condition').textContent = `${productData.condition}`;
-              document.querySelector('.waterResistance').textContent = `${productData.waterResistance}`;
-              document.querySelector('.screenType').textContent = `${productData.screenType}`;
-              document.querySelector('.bioSecurity').textContent = `${productData.bioSecurity}`;
-              document.querySelector('.dimensions').textContent = `${productData.dimensions}`;
-              document.querySelector('.weight').textContent = `${productData.weight}`;
-              document.querySelector('.releaseDate').textContent = `${productData.releaseDate}`;
-              document.querySelector('.stockStatus').textContent = `${productData.stockStatus}`;
-              document.querySelector('.simType').textContent = `${productData.simType.join(", ")}`;
-              document.querySelector('.chargingPort').textContent = `${productData.chargingPort}`;
-              document.querySelector('.refreshRate').textContent = `${productData.refreshRate}`;
-              document.querySelector('.audioFeatures').textContent = `${productData.audioFeatures}`;
-              document.querySelector('.buildMaterial').textContent = `${productData.buildMaterial}`;
-              document.querySelector('.video iframe').src = embedUrl;
-              document.querySelector('.image').src = productData.image;
-              document.querySelector('.imageGallery').innerHTML = productData.imageGallery.map(img => `<img src="${img}">`).join("");
-          } else {
+          if (!productData) {
               console.error('Product not found');
+              return;
           }
+
+          const originalVideoUrl = productData.video;
+
+          // Chuyển đổi URL thành dạng "embed" để nhúng video
+          function convertToEmbedUrl(url) {
+              const videoId = url.split('v=')[1]?.split('&')[0];
+              return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1` : '';
+          }
+
+          const embedUrl = convertToEmbedUrl(originalVideoUrl);
+
+          // Cập nhật thông tin sản phẩm vào HTML
+          document.querySelector('.video iframe').src = embedUrl;
+          document.querySelector('.name').textContent = `${productData.model} | Chính hãng VN/A`;
+          document.querySelector('.name2').textContent = productData.model;
+          document.querySelector('.price').textContent = `${productData.priceSale.toLocaleString()}đ`;
+          document.querySelector('.original-price').textContent = `${productData.price.toLocaleString()}đ`;
+          document.querySelector('.discount').textContent = `-${productData.sale}%`;
+          document.querySelector('.brand').textContent = productData.brand;
+          document.querySelector('.ram').textContent = productData.ram;
+          document.querySelector('.storage').textContent = productData.storage;
+          document.querySelector('.batteryCapacity').textContent = productData.batteryCapacity;
+          document.querySelector('.wired').textContent = productData.wired;
+          document.querySelector('.wireless').textContent = productData.wireless;
+          document.querySelector('.cameraSpecs').textContent = productData.cameraSpecs;
+          document.querySelector('.network').textContent = productData.network;
+          document.querySelector('.wifi').textContent = productData.wifi;
+          document.querySelector('.bluetooth').textContent = productData.bluetooth;
+          document.querySelector('.processor').textContent = productData.processor;
+          document.querySelector('.condition').textContent = productData.condition;
+          document.querySelector('.waterResistance').textContent = productData.waterResistance;
+          document.querySelector('.screenType').textContent = productData.screenType;
+          document.querySelector('.bioSecurity').textContent = productData.bioSecurity;
+          document.querySelector('.dimensions').textContent = productData.dimensions;
+          document.querySelector('.weight').textContent = productData.weight;
+          document.querySelector('.releaseDate').textContent = productData.releaseDate;
+          document.querySelector('.stockStatus').textContent = productData.stockStatus;
+          document.querySelector('.simType').textContent = productData.simType.join(", ");
+          document.querySelector('.chargingPort').textContent = productData.chargingPort;
+          document.querySelector('.refreshRate').textContent = productData.refreshRate;
+          document.querySelector('.audioFeatures').textContent = productData.audioFeatures;
+          document.querySelector('.buildMaterial').textContent = productData.buildMaterial;
+
+          // Cập nhật từng ảnh trong `imageGallery` vào các img riêng
+          const sliderLeftTop = document.querySelector('.slider_left_top');
+          sliderLeftTop.innerHTML = ""; // Xóa nội dung cũ nếu có
+
+          productData.imageGallery.forEach((img, index) => {
+              if (index < 3) { // Chỉ tạo tối đa 3 ảnh
+                  const imageElement = document.createElement('img');
+                  imageElement.src = img;
+                  imageElement.alt = `Product Image ${index + 1}`;
+                  imageElement.classList.add(`imageGalleryContainer${index + 1}`);
+                  
+                  // Thêm ảnh vào slider_left_top
+                  sliderLeftTop.appendChild(imageElement);
+              }
+          });
+          
       })
       .catch(error => console.error('Error fetching JSON:', error));
 });
-
