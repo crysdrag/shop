@@ -46,13 +46,13 @@ function renderProductById(product, containerClass) {
                     </div>
                 </div>
             </a>
-            <button>
-                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.5 10C6.5 9.72386 6.72386 9.5 7 9.5H10V6.5C10 6.22386 10.2239 6 10.5 6C10.7761 6 11 6.22386 11 6.5V9.5H14C14.2761 9.5 14.5 9.72386 14.5 10C14.5 10.2761 14.2761 10.5 14 10.5H11V13.5C11 13.7761 10.7761 14 10.5 14C10.2239 14 10 13.7761 10 13.5V10.5H7C6.72386 10.5 6.5 10.2761 6.5 10ZM10.5 18C14.9183 18 18.5 14.4183 18.5 10C18.5 5.58172 14.9183 2 10.5 2C6.08172 2 2.5 5.58172 2.5 10C2.5 14.4183 6.08172 18 10.5 18ZM10.5 17C6.63401 17 3.5 13.866 3.5 10C3.5 6.13401 6.63401 3 10.5 3C14.366 3 17.5 6.13401 17.5 10C17.5 13.866 14.366 17 10.5 17Z" fill="#090D14"></path>
-                </svg>
-                <span id="SS1">So sánh</span>
-                <span id="SS2">Đã thêm</span>
-            </button>
+            <label class="custom-checkbox">
+                    <input type="checkbox" id="${product.brand}_${product.id}" onclick ="updateListPhone('${product.brand}','${product.id}', this)">
+                    <span class="icon">
+                        <i class="fa-solid fa-circle-plus"></i> <!-- Icon cho trạng thái chưa chọn -->
+                        <i class="fa-solid fa-circle-check"></i> <!-- Icon cho trạng thái đã chọn -->
+                    </span>So sánh
+            </label>
         </div>
         `;
     }
@@ -88,20 +88,20 @@ function renderProductBy(product, containerClass) {
                     </div>
                 </div>
             </a>
-            <button>
-                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.5 10C6.5 9.72386 6.72386 9.5 7 9.5H10V6.5C10 6.22386 10.2239 6 10.5 6C10.7761 6 11 6.22386 11 6.5V9.5H14C14.2761 9.5 14.5 9.72386 14.5 10C14.5 10.2761 14.2761 10.5 14 10.5H11V13.5C11 13.7761 10.7761 14 10.5 14C10.2239 14 10 13.7761 10 13.5V10.5H7C6.72386 10.5 6.5 10.2761 6.5 10ZM10.5 18C14.9183 18 18.5 14.4183 18.5 10C18.5 5.58172 14.9183 2 10.5 2C6.08172 2 2.5 5.58172 2.5 10C2.5 14.4183 6.08172 18 10.5 18ZM10.5 17C6.63401 17 3.5 13.866 3.5 10C3.5 6.13401 6.63401 3 10.5 3C14.366 3 17.5 6.13401 17.5 10C17.5 13.866 14.366 17 10.5 17Z" fill="#090D14"></path>
-                </svg>
-                <span id="SS1">So sánh</span>
-                <span id="SS2">Đã thêm</span>
-            </button>
+            <label class="custom-checkbox">
+                    <input type="checkbox" id="${product.brand}_${product.id}" onclick ="updateListPhone('${product.brand}','${product.id}', this)">
+                    <span class="icon">
+                        <i class="fa-solid fa-circle-plus"></i> <!-- Icon cho trạng thái chưa chọn -->
+                        <i class="fa-solid fa-circle-check"></i> <!-- Icon cho trạng thái đã chọn -->
+                    </span>So sánh
+            </label>
         </div>
         `;
     }
 }
 
 let allProducts = [];
-
+const phones = {};
 // Fetch dữ liệu từ file JSON
 fetch('phone.json')
     .then(response => {
@@ -109,6 +109,7 @@ fetch('phone.json')
         return response.json();
     })
     .then(data => {
+        Object.assign(phones, data);
         // Lấy sản phẩm từ các hãng
         const apple = data.apple || [];
         const samsung = data.samsung || [];
@@ -117,24 +118,28 @@ fetch('phone.json')
         
         // Hiển thị sản phẩm Apple
         apple.forEach((smart, index) => {
+            smart.brand = smart.brand.toLowerCase();
             renderProductBy(smart, `S${index + 1}Apple`); // Render sản phẩm Apple vào div có id="S1Apple", "S2Apple", ...
             renderProduct(smart, `B${index + 1}Apple`);
         });
 
         // Hiển thị sản phẩm Samsung
         samsung.forEach((smart, index) => {
+            smart.brand = smart.brand.toLowerCase();
             renderProductBy(smart, `S${index + 1}Samsung`); // Render sản phẩm Samsung vào div có id="S1Samsung", "S2Samsung", ...
             renderProduct(smart, `B${index + 1}Samsung`);
         });
 
         // Hiển thị sản phẩm oppo
         oppo.forEach((smart, index) => {
+            smart.brand = smart.brand.toLowerCase();
             renderProductBy(smart, `S${index + 1}oppo`); // Render sản phẩm Samsung vào div có id="S1Samsung", "S2Samsung", ...
             renderProduct(smart, `B${index + 1}oppo`);
         });
 
         // Hiển thị sản phẩm Samsung
         redmi.forEach((smart, index) => {
+            smart.brand = smart.brand.toLowerCase();
             renderProductBy(smart, `S${index + 1}redmi`); // Render sản phẩm Samsung vào div có id="S1Samsung", "S2Samsung", ...
             renderProduct(smart, `B${index + 1}redmi`);
         });
