@@ -24,7 +24,7 @@ table {
     font-weight: 700;
     border: none;
     cursor: pointer;
-    z-index: 990;
+    z-index: 98;
 }
 
 .compareBox {
@@ -35,7 +35,7 @@ table {
     box-shadow: 0 -14px 20px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-evenly;
-    z-index: 1000;
+    z-index: 99;
 }
 
 .collapseBtn {
@@ -88,6 +88,8 @@ table {
     border: 2px dashed gray;
     border-radius: 5px;
 }
+
+
 
 .compareBtn>label {
     cursor: pointer;

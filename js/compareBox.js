@@ -1,8 +1,8 @@
-const phoneData = {}; //biến lưu dữ liệu đọc từ file
+// const phoneData = {}; //biến lưu dữ liệu đọc từ file
 const listPhone = []; // mảng lưu những phone cần so sánh
 const max = 3; //giới hạn phone so sánh
 
-//tạo box hiển thị số điện thoại nằm trong list so sánh
+//tạo nút hiển thị số điện thoại nằm trong list so sánh và làm hiện những điện thoại đang trong danh sách
 const isComparing = document.createElement('button');
 isComparing.id = 'displayCompareBox';
 isComparing.onclick = () => {
@@ -36,6 +36,7 @@ compare.innerHTML = `
             <label for="" id="comparePhone1">Phone 1</label>
         </div>
     </div>
+
     <div class="comparePhone" id="phoneBox2">
         <button class="compareBtn" id="compareBtn2">
             <i class="fa-solid fa-mobile big_i"></i>
@@ -44,43 +45,47 @@ compare.innerHTML = `
         <!---->
         <div class="choosenPhone" id="choosenBoxPhone2" style="display: none;">
             <button class="inner_close" id="removePhone2">
-                <i class="fa-solid fa-x small_i"></i>                </button>
-                <img src="" alt="phone_img">
-                <label for="" id="comparePhone2">Phone 2</label>
-            </div>
-    </div>
-        <div class="comparePhone" id="phoneBox3">
-            <button class="compareBtn" id="compareBtn3">
-                <i class="fa-solid fa-mobile big_i"></i>
-                <label name="choosenPhone3">Choose device!</label>
+                <i class="fa-solid fa-x small_i"></i>                
             </button>
-            <!---->
-            <div class="choosenPhone" id="choosenBoxPhone3" style="display: none;">
-                <button class="inner_close" id="removePhone3">
-                    <i class="fa-solid fa-x small_i"></i>
-                </button>
-                <img src="" alt="phone_img">
-                <label for="" id="comparePhone3">Phone 3</label>
-            </div>
+            <img src="" alt="phone_img">
+            <label for="" id="comparePhone2">Phone 2</label>
         </div>
-        <div class="confirmBtnBox">
-            <button id="confirmBtn" >So sánh!</button>
-            <button id="removeListBtn" >Xóa toàn bộ sanh sách</button>
+    </div>
+
+    <div class="comparePhone" id="phoneBox3">
+        <button class="compareBtn" id="compareBtn3">
+            <i class="fa-solid fa-mobile big_i"></i>
+            <label name="choosenPhone3">Choose device!</label>
+        </button>
+        <!---->
+        <div class="choosenPhone" id="choosenBoxPhone3" style="display: none;">
+            <button class="inner_close" id="removePhone3">
+                <i class="fa-solid fa-x small_i"></i>
+            </button>
+            <img src="" alt="phone_img">
+            <label for="" id="comparePhone3">Phone 3</label>
         </div>
-        <div class="collapseBtn">
-            <button id="collapseBtn" >Thu gọn</button>
-        </div>
+    </div>
+
+    <div class="confirmBtnBox">
+        <button id="confirmBtn" >So sánh!</button>
+        <button id="removeListBtn" >Xóa toàn bộ sanh sách</button>
+    </div>
+    <div class="collapseBtn">
+        <button id="collapseBtn" >Thu gọn</button>
+    </div>
 
 `
-
 compare.classList.add('compareBox');
 compare.id = 'compareBox';
 compare.style.display = 'none';
 document.getElementsByTagName('body')[0].appendChild(compare);
 document.getElementsByTagName('body')[0].appendChild(isComparing);
 
+//nút "xóa toàn bộ danh sách"
 const check = document.getElementById('removeListBtn');
 check.onclick = () => {
+
     listPhone.forEach(phone => {
         const oldCB = document.getElementById(`${phone.brand}_${phone.id}`);
         oldCB.checked = false;
@@ -88,17 +93,20 @@ check.onclick = () => {
     listPhone.splice(0, listPhone.length);
 
     const toast = document.getElementById('toast');
-    if(toast) removeToast(toast);
+    if (toast) removeToast(toast);
 
     renderChoosingPhone();
     isComparingDisplay();
 
     compare.style.display = 'none';
 }
+
+//nút "Thu gọn"
 document.getElementById('collapseBtn').onclick = () => {
     compare.style.display = 'none';
 }
 
+//hiển thị thông báo khi số lượng phone trong danh sách so sánh vượt quá 3
 function showToast(message) {
     const toast = document.createElement("div");
     toast.className = "toast";
@@ -106,7 +114,7 @@ function showToast(message) {
 
     const text = document.createElement("span");
     text.innerText = message;
-    
+
     const button = document.createElement("button");
     button.innerText = "OK";
     button.onclick = () => removeToast(toast);
@@ -114,7 +122,6 @@ function showToast(message) {
     toast.appendChild(text);
     toast.appendChild(button);
 
-    const direc = compare.getBoundingClientRect();
     toast.style.bottom = `165px`
 
     const container = document.getElementsByTagName("body");
@@ -126,6 +133,7 @@ function showToast(message) {
     toast.dataset.autoHide;
 }
 
+//xóa thông báo khi bỏ 1 phone/ khi xóa toàn bộ danh sách/ khi bấm nút OK trên thông báo
 function removeToast(toast) {
     toast.classList.remove("show");
 
@@ -139,6 +147,7 @@ function removeToast(toast) {
 function updateListPhone(brand, productId, checkbox) {
     const low = str => str.toLowerCase();
     const product = phones[brand].find(obj => obj.id === productId);
+
     if (checkbox.checked) {
         if (listPhone.length >= max) {
             showToast(`Bạn chỉ được chọn tối đa 3 đối tượng!`)
@@ -167,7 +176,7 @@ function deleteProduct(product) {
     }
 
     const toast = document.getElementById('toast');
-    if(toast) removeToast(toast);
+    if (toast) removeToast(toast);
 
     if (listPhone.length === 0) {
         compareBox.style.display = 'none';
@@ -180,6 +189,7 @@ function renderChoosingPhone() {
         document.getElementById(`compareBtn${i + 1}`).style.display = 'flex';
         document.getElementById(`choosenBoxPhone${i + 1}`).style.display = 'none';
     }
+    
     listPhone.forEach((phone, index) => {
         const divToHide = document.getElementById(`compareBtn${index + 1}`);
         divToHide.style.display = 'none';
@@ -191,7 +201,7 @@ function renderChoosingPhone() {
             deleteProduct(phone);
 
             const oldCB = document.getElementById(`${phone.brand}_${phone.id}`);
-            oldCB.checked = false;
+            if(oldCB) oldCB.checked = false;
         };
 
         divToShow.children[1].src = phone.image;
@@ -208,7 +218,7 @@ function renderChoosingPhone() {
 const compareBtn = document.getElementById('confirmBtn');
 compareBtn.onclick = () => {
     sessionStorage.setItem('listPhone', JSON.stringify(listPhone));
-    window.open('../comparePhone.html', '_blank');
+    window.open('/comparePhone.html', '_blank');
     // renderCompareData();
 }
 ////////bên này là file comparePhone.html dùng để hiển thị những phone được confirm là so sánh
@@ -219,6 +229,7 @@ function renderCompareData(listPhone) {
     const appleIcon = '<i class="fa-brands fa-apple"></i>';
     const androidIcon = '<i class="fa-brands fa-android"></i>'
 
+    //clear toàn bộ các cell trong table trước khi render dữ liệu
     for (let j = 1; j < 4; j++) {
         const mainCell = table.rows[0].cells[j];
         const div = mainCell.children[0];
@@ -229,10 +240,12 @@ function renderCompareData(listPhone) {
         }
     }
 
+    //đọc dữ liệu từng phone và render theo cột
     listPhone.forEach((phone, index) => {
         const div = document.getElementById(`phone${index + 1}`);
         const priceNum = phone.price.toLocaleString('vi-VN');
 
+        //hàng đầu tiên hiện ảnh, model, giá tiền, màu sắc
         div.innerHTML = `
             <img src="${phone.image}" alt="${phone.model} ${phone.storage}" class="imgPhone">
             <span class="phoneName">${phone.model} ${phone.storage}</span>
@@ -252,25 +265,25 @@ function renderCompareData(listPhone) {
                 let name = table.rows[i].getAttribute('name');
 
                 const cell = table.rows[i].cells[index + 1];
-                if(phone[name] === true){
+                if (phone[name] === true) {
                     cell.textContent = 'Có';
                     cell.style.color = '#485fc7';
                 }
-                else if(phone[name] === false){
+                else if (phone[name] === false) {
                     cell.textContent = 'Không';
                     cell.style.color = 'red';
                 }
                 else cell.textContent = phone[name];
 
-                if(name === 'operatingSystem') {
-                    if(phone.brand === 'apple'){
+                if (name === 'operatingSystem') {
+                    if (phone.brand === 'apple') {
                         cell.innerHTML = appleIcon + ' ' + cell.innerHTML;
                     }
                     else cell.innerHTML = androidIcon + ' ' + cell.innerHTML;
                 }
                 cell.id = name + "_" + phone.brand + "_" + phone.id;
             }
-            }
+        }
     })
 }
 
