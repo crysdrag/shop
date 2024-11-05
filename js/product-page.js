@@ -410,6 +410,8 @@ document.addEventListener("DOMContentLoaded", function() {
               // document.querySelector('.discount').textContent = `-${productData.sale}%`;
               // document.querySelector('.batteryCapacity').textContent = productData.batteryCapacity;
               // ... thêm các thuộc tính khác tương tự
+              document.querySelector('.price').textContent = `${productData.priceSale.toLocaleString()}đ`;
+              document.querySelector('.original-price').textContent = `${productData.price.toLocaleString()}đ`;
               document.querySelector('.name2').textContent = `${productData.model}`;
               document.querySelector('.name').textContent = `${productData.model} | Chính hãng VN/A`;
               document.querySelector('.brand').textContent = `${productData.brand}`;
