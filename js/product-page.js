@@ -439,11 +439,23 @@ document.addEventListener("DOMContentLoaded", function() {
               document.querySelector('.audioFeatures').textContent = `${productData.audioFeatures}`;
               document.querySelector('.buildMaterial').textContent = `${productData.buildMaterial}`;
               document.querySelector('.video iframe').src = embedUrl;
-              document.querySelector('.image').src = productData.image;
-              document.querySelector('.imageGallery').innerHTML = productData.imageGallery.map(img => `<img src="${img}">`).join("");
-          } else {
-              console.error('Product not found');
-          }
+              
+          // Cập nhật từng ảnh trong `imageGallery` vào các img riêng
+          const sliderLeftTop = document.querySelector('.slider_left_top');
+          sliderLeftTop.innerHTML = ""; // Xóa nội dung cũ nếu có
+
+          productData.imageGallery.forEach((img, index) => {
+              if (index < 3) { // Chỉ tạo tối đa 3 ảnh
+                  const imageElement = document.createElement('img');
+                  imageElement.src = img;
+                  imageElement.alt = `Product Image ${index + 1}`;
+                  imageElement.classList.add(`imageGalleryContainer${index + 1}`);
+                  
+                  // Thêm ảnh vào slider_left_top
+                  sliderLeftTop.appendChild(imageElement);
+              }
+          });
+          
       })
       .catch(error => console.error('Error fetching JSON:', error));
 });
