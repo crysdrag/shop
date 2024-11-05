@@ -234,7 +234,7 @@ function renderCompareData(listPhone) {
         const mainCell = table.rows[0].cells[j];
         const div = mainCell.children[0];
         div.innerHTML = "";
-        for (let i = 2; i < 20; i++) {
+        for (let i = 2; i < 30; i++) {
             table.rows[i].cells[j].textContent = "";
             table.rows[i].cells[j].id = "";
         }
