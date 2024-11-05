@@ -218,7 +218,7 @@ function renderChoosingPhone() {
 const compareBtn = document.getElementById('confirmBtn');
 compareBtn.onclick = () => {
     sessionStorage.setItem('listPhone', JSON.stringify(listPhone));
-    window.open('shop/comparePhone.html', '_blank');
+    window.open('/comparePhone.html', '_blank');
     // renderCompareData();
 }
 ////////bên này là file comparePhone.html dùng để hiển thị những phone được confirm là so sánh
