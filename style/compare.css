@@ -1,5 +1,6 @@
 .container {
     padding-top: 2%;
+    margin-top: 2%;
     /* overflow-x: auto; */
 }
 
@@ -8,6 +9,7 @@ table {
     table-layout: auto;
     border-radius: 10px;
     padding-top: 2%;
+    border-spacing: 0 5px;
 }
 
 
@@ -34,6 +36,7 @@ table {
     width: 100%;
     box-shadow: 0 -14px 20px rgba(0, 0, 0, 0.3);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     z-index: 99;
 }
@@ -42,6 +45,7 @@ table {
     position: absolute;
     right: 40px;
     top: -20px;
+    display: flex;
 }
 
 #collapseBtn {
@@ -87,6 +91,7 @@ table {
     justify-content: center;
     border: 2px dashed gray;
     border-radius: 5px;
+    padding: 0;
 }
 
 
@@ -177,6 +182,13 @@ table {
     display: inline;
 }
 
+.phoneInfor {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
 .removeBtn {
     position: absolute;
     top: 0;
@@ -212,15 +224,17 @@ table {
 #phone2,
 #phone3 {
     width: auto;
-    height: 450px;
+    height: auto;
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 10px;
     gap: 5px;
 }
 
 .imgPhone {
+    max-width: 320px;
     width: 95%;
     height: auto;
     border-radius: 10px;
@@ -239,10 +253,13 @@ table {
 
 th {
     width: 15%;
+    white-space: nowrap;
 }
 
 td {
     width: 26%;
+    border-left: none;
+    border-right: none;
 }
 
 .toast {
@@ -281,4 +298,141 @@ td {
 
 .toast button:hover {
     background: rgb(225, 55, 87);
+}
+
+.normal {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.pHide {
+    display: none;
+}
+
+.pBold {
+    font-weight: bold;
+}
+
+.phoneHeader {
+    /* width: 100%; */
+    padding: auto;
+    height: 160px;
+    background-color: white;
+    border: 2px solid #333;
+    position: fixed;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 1001;
+}
+
+.phoneHeader div {
+    position: relative;
+}
+
+.phoneHeader img {
+    height: 50%;
+    width: fit-content;
+    object-fit: cover;
+
+}
+
+.phoneHeader span {
+    display: flex;
+    font-size: small;
+}
+
+.phoneHeader>div {
+    height: 160px;
+    padding: 0 8px;
+}
+
+#notShow {
+
+}
+
+
+@media screen and (max-width: 680px) {
+
+    /* table {
+        width: 90%;
+        border: 2px solid black;
+        border-radius: 10px;
+    } */
+
+    #removeListBtn {
+        display: none;
+    }
+
+    .comparePhone {
+        flex: 1 0 calc(33.33% - 15px);
+    }
+
+    .confirmBtnBox {
+        flex: 1.5;
+    }
+
+    #confirmBtn {
+        width: 100%;
+        height: 30px;
+        padding: 0 0 0 6px;
+        border-radius: 0;
+        border: 1px solid rgb(248, 62, 96);
+    }
+
+    #confirmBtn:disabled {
+        border: 1px solid gray;
+    }
+
+    .collapseBtn {
+        position: relative;
+        top: auto;
+        right: auto;
+        flex: 1.5;
+    }
+
+    #collapseBtn {
+        background-color: white;
+        width: 100%;
+        height: 30px;
+        padding: 0;
+        color: rgb(248, 62, 96);
+        border: 1px solid rgb(248, 62, 96);
+        border-radius: 0;
+        font-weight: 700;
+    }
+
+    #collapseBtn:hover {
+        /* background-color: rgb(238, 238, 238); */
+        border: none;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    th {
+        display: none;
+    }
+
+    .alwayShow {
+        display: table-cell;
+    }
+
+    .pHide {
+        display: block;
+        visibility: hidden;
+        padding: 0;
+        margin-bottom: 5px;
+        
+    }
+
+    .pBold {
+        position: absolute;
+        visibility: inherit;
+        color: black;
+        white-space: nowrap;
+    }
+
 }
